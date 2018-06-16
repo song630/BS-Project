@@ -22,11 +22,6 @@
   font-size: large;
 }
 
-.my-class {
-    text-align: center;
-    font-size: medium;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
