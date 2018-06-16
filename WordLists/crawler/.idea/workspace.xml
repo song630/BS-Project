@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6f9c207-19a6-4cb0-ab1e-af203be34d65" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WordListCrawler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/basic/WordEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../web/Demo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../web/Demo/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c6f9c207-19a6-4cb0-ab1e-af203be34d65" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +27,7 @@
       <file leaf-file-name="WordListCrawler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WordListCrawler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
+            <state relative-caret-position="247">
               <caret line="84" column="47" lean-forward="true" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -79,7 +74,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="73" />
     <option name="y" value="37" />
     <option name="width" value="1434" />
@@ -199,12 +194,12 @@
       <updated>1529071590705</updated>
       <workItem from="1529071591957" duration="2495000" />
       <workItem from="1529115119147" duration="6866000" />
-      <workItem from="1529127915608" duration="14630000" />
+      <workItem from="1529127915608" duration="15085000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23991000" />
+    <option name="totallyTimeSpent" value="24446000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="25" width="956" height="620" extended-state="0" />
@@ -304,7 +299,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WordListCrawler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="247">
           <caret line="84" column="47" lean-forward="true" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
