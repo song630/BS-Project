@@ -94,6 +94,7 @@ export default {
     }
     return {
       dialogFormVisible: false,
+      formLabelWidth: '120px',
       options: [
         { value: 'primary', label: '小学' },
         { value: 'junior', label: '初中' },

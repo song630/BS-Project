@@ -7,6 +7,7 @@
     <!--此文件负责整个mvc中的配置-->
 
     <!--启用spring的一些annotation -->
+    <!-- 使用注解来配置 如@ -->
     <context:annotation-config/>
 
     <!-- 配置注解驱动 可以将request参数与绑定到controller参数上 -->
@@ -20,6 +21,9 @@
 
     <!-- 对模型视图名称的解析，即在模型视图名称添加前后缀(如果最后一个还是表示文件夹,则最后的斜杠不要漏了) 使用JSP-->
     <!-- 默认的视图解析器 在上边的解析错误时使用 (默认使用html)- -->
+    <!-- 表示一个类 类名为DefaultViewResolver -->
+    <!-- property都是类内的成员 -->
+    <!-- value是传值 ref是传引用 -->
     <bean id="defaultViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/"/><!--设置JSP文件的目录位置-->

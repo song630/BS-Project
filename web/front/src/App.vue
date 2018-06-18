@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <h1>{{ serverData }}</h1>
+    <button @click="getData">获取数据</button>
     <router-view/>
     <!-- router-link to=/ 表示就显示在当前页面上 -->
     <!-- <router-link to="/" class="router-link">主页</router-link> -->
@@ -8,8 +10,32 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      serverData: 'no data'
+    }
+  },
+  methods: {
+    getData () {
+      $.ajax({
+        type: 'GET',
+        url: 'http://222.205.124.205:8080/Hello/getperson/33333',
+        dataType: 'json',
+        crossDomain: true,
+        data: {},
+        success: (result) => {
+          this.serverData = JSON.stringify(result)
+          // alert(this.serverData)
+        },
+        error: function () {
+          alert('error')
+        }
+      })
+    }
+  }
 }
 </script>
 
