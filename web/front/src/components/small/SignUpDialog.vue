@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'SignUpDialog',
   data () {
@@ -52,11 +53,11 @@ export default {
         callback(new Error('请输入密码'))
       }
       // 也可以6-20个数字 字母 下划线 /^(\w){6,20}$/
-      let pwdRE = /^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/
+      let pwdRE = /^(\w){6,20}$/
       if (pwdRE.test(value)) {
         callback()
       } else {
-        callback(new Error('密码格式错误：最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符'))
+        callback(new Error('密码格式错误：6-20位，可以包含数字、字母、下划线'))
       }
     }
     let reenterCheck = (rule, value, callback) => {
@@ -82,13 +83,14 @@ export default {
     }
     let phoneCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入电话号码'))
+        callback(new Error('请输入手机号码'))
       } else {
-        let phoneRE = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/
+        let phoneRE = /^[1][34578][0-9]{9}$/
+        // 开头是1 第二位是34578 以0-9的9个数字结尾
         if (phoneRE.test(value)) {
           callback()
         } else {
-          callback(new Error('电话号码格式错误'))
+          callback(new Error('手机号码格式错误'))
         }
       }
     }
@@ -120,13 +122,35 @@ export default {
     }
   },
   methods: {
-    submit (formName) {
+    submit: function (formName) {
+      let canSubmit = false
       this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit')
+        if (!valid) {
+          alert('输入有误')
+          canSubmit = false
+        } else {
+          canSubmit = true
         }
       })
-      this.dialogFormVisible = false
+      if (canSubmit) {
+        let toSubmit = this.form.username
+        console.log('toSubmit:', toSubmit)
+        $.ajax({
+          type: 'GET',
+          // ethernet: 222.205.124.205
+          url: 'http://10.180.21.132:8080/main/submit_signup',
+          crossDomain: true,
+          dataType: 'text',
+          data: {obj: JSON.stringify(this.form)},
+          success: (result) => {
+            alert('注册成功')
+            this.dialogFormVisible = false
+          },
+          error: function () {
+            alert('注册失败')
+          }
+        })
+      }
     }
   }
 }

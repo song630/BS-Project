@@ -13,7 +13,8 @@
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
           <element id="library" level="project" name="Maven: javax.servlet.jsp:jsp-api:2.2" />
           <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
-          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.35" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.11" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:2.6.0" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.2.6.RELEASE" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
@@ -42,6 +43,7 @@
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.3" />
           <element id="library" level="project" name="Maven: com.thetransactioncompany:cors-filter:2.6" />
           <element id="library" level="project" name="Maven: com.thetransactioncompany:java-property-utils:1.9.1" />
+          <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.3" />
         </element>
       </element>
       <element id="directory" name="META-INF">
