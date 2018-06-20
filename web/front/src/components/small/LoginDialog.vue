@@ -23,21 +23,31 @@
 </template>
 
 <script>
+import $ from 'jquery'
 export default {
   name: 'LoginDialog',
   data () {
-    var usernameCheck = (rule, value, callback) => {
+    let usernameCheck = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入用户名'))
       } else {
-        callback()
+        let usernameRE = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){4,19}$/
+        if (usernameRE.test(value)) {
+          callback()
+        } else {
+          callback(new Error('用户名格式错误：5-20个以字母开头，可包含数字和下划线的字符'))
+        }
       }
     }
-    var passwordCheck = (rule, value, callback) => {
+    let passwordCheck = (rule, value, callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
-      } else {
+      }
+      let pwdRE = /^(\w){6,20}$/
+      if (pwdRE.test(value)) {
         callback()
+      } else {
+        callback(new Error('密码格式错误：6-20位，可以包含数字、字母、下划线'))
       }
     }
     return {
@@ -54,13 +64,47 @@ export default {
     }
   },
   methods: {
-    submit (formName) {
+    submit: function (formName) {
+      let canSubmit = false
       this.$refs[formName].validate((valid) => {
-        if (valid) {
-          alert('submit')
+        if (!valid) {
+          alert('输入有误')
+          canSubmit = false
+        } else {
+          canSubmit = true
         }
       })
-      this.dialogFormVisible = false
+      if (canSubmit) {
+        $.ajax({
+          type: 'GET',
+          url: 'http://localhost:8080/main/submit_login',
+          crossDomain: true,
+          dataType: 'json',
+          data: {obj: JSON.stringify(this.form)},
+          success: (result) => {
+            console.log('result:', result)
+            if (result.info === 'success') {
+              alert('注册成功')
+              this.dialogFormVisible = false
+              // 改变上层组件显示的username (默认guest)
+              this.$emit('login_success', this.form.username)
+            } else if (result.info === 'wrong_pwd') {
+              alert('密码错误')
+              this.dialogFormVisible = true
+            } else if (result.info === 'not_found') {
+              alert('找不到用户')
+              this.dialogFormVisible = true
+            } else {
+              alert('注册失败')
+              this.dialogFormVisible = true
+            }
+          },
+          error: function () {
+            alert('登录失败')
+            this.dialogFormVisible = true
+          }
+        })
+      }
     }
   }
 }

@@ -71,7 +71,7 @@ export default {
     }
     let usernameCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请再次输入密码'))
+        callback(new Error('请输入用户名'))
       } else {
         let usernameRE = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){4,19}$/
         if (usernameRE.test(value)) {
@@ -138,16 +138,26 @@ export default {
         $.ajax({
           type: 'GET',
           // ethernet: 222.205.124.205
-          url: 'http://10.180.21.132:8080/main/submit_signup',
+          url: 'http://localhost:8080/main/submit_signup',
           crossDomain: true,
-          dataType: 'text',
+          dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
           success: (result) => {
-            alert('注册成功')
-            this.dialogFormVisible = false
+            console.log('result:', result)
+            if (result.info === 'success') {
+              alert('注册成功')
+              this.dialogFormVisible = false
+            } else if (result.info === 'existed') {
+              alert('用户名已经存在')
+              this.dialogFormVisible = true
+            } else {
+              alert('注册失败')
+              this.dialogFormVisible = true
+            }
           },
           error: function () {
             alert('注册失败')
+            this.dialogFormVisible = true
           }
         })
       }

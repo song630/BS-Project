@@ -2,6 +2,8 @@ package example.dao;
 import example.pojo.User;
 import java.util.List;
 import javax.sql.DataSource;
+
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UserJDBCTemplate implements UserDAO {
@@ -26,6 +28,18 @@ public class UserJDBCTemplate implements UserDAO {
     public User getUser(String username) {
         String sql = "select * from user where username = ?;";
         return jdbcTemp.queryForObject(sql, new Object[]{username}, new UserMapper());
+    }
+
+    @Override
+    public boolean isUsernameExist(String username) {
+        String sql = "select username from user where username = ?;";
+        try {
+            String res = jdbcTemp.queryForObject(sql, new Object[]{username}, java.lang.String.class);
+            System.out.println("res: " + res);
+            return res.equals(username);
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
     }
 
     @Override

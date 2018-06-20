@@ -29,7 +29,7 @@
       <el-container>
         <el-header>
           <h2 class="header-title">背单词网站</h2>
-          <LoginDialog class="login-dialog"></LoginDialog><!-- 登录页面 -->
+          <LoginDialog class="login-dialog" @login_success="change_login_name"></LoginDialog><!-- 登录页面 -->
           <SignUpDialog class="signup-dialog"></SignUpDialog><!-- 注册页面 -->
           <span class="header-others">{{ username }}</span>
         </el-header>
@@ -63,8 +63,8 @@ export default {
     }
   },
   methods: {
-    showLoginBox () {
-      alert('aaa')
+    change_login_name (param) { // 把guest改为子组件传过来的用户名
+      this.username = param
     }
   }
 }

@@ -4,13 +4,15 @@
     <!-- router-link to=/ 表示就显示在当前页面上 -->
     <!-- <router-link to="/" class="router-link">主页</router-link> -->
     <!-- <el-button type="primary" icon="el-icon-search">搜索</el-button> -->
+    <!--
     <h1>{{ serverData }}</h1>
     <button @click="getData">获取数据</button>
+    -->
   </div>
 </template>
 
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 export default {
   name: 'App',
   data () {
@@ -19,10 +21,11 @@ export default {
     }
   },
   methods: {
+    /*
     getData () {
       $.ajax({
         type: 'GET', // 222.205.124.205
-        url: 'http://10.180.21.132:8080/Hello/getperson/33333',
+        url: 'http://localhost:8080/Hello/getperson/33333',
         dataType: 'json',
         crossDomain: true,
         data: {},
@@ -33,7 +36,7 @@ export default {
           alert('error')
         }
       })
-    }
+    } */
   }
 }
 </script>
