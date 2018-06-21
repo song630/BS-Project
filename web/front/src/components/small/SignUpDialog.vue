@@ -138,8 +138,11 @@ export default {
         $.ajax({
           type: 'GET',
           // ethernet: 222.205.124.205
-          url: 'http://localhost:8080/main/submit_signup',
+          url: 'http://localhost:8080/Hello/submit_signup',
           crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
           dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
           success: (result) => {

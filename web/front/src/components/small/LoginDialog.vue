@@ -77,14 +77,17 @@ export default {
       if (canSubmit) {
         $.ajax({
           type: 'GET',
-          url: 'http://localhost:8080/main/submit_login',
+          url: 'http://localhost:8080/Hello/submit_login',
           crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
           dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
           success: (result) => {
             console.log('result:', result)
             if (result.info === 'success') {
-              alert('注册成功')
+              alert('登录成功')
               this.dialogFormVisible = false
               // 改变上层组件显示的username (默认guest)
               this.$emit('login_success', this.form.username)

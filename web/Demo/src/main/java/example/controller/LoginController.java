@@ -10,14 +10,24 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import example.CookieController;
 
 @Controller
+@RequestMapping("/Hello")
 public class LoginController {
     @ResponseBody
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "main/submit_login", method = RequestMethod.GET)
-    public Map<String, String> LoginUser(@RequestParam String obj) {
+    @RequestMapping(value = "/submit_login", method = RequestMethod.GET)
+    public Map<String, String> LoginUser(HttpServletRequest request, HttpServletResponse response, @RequestParam String obj) {
+        if(request.getHeader("Origin").contains("localhost")) {
+            response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        }
+        response.setHeader("Access-Control-Allow-Credentials", "true");
         Map<String, String> resultMap = new HashMap<String, String>();
+        CookieController cc = new CookieController(request, response);
+        cc.showCookies();
         try {
             System.out.println("received: " + obj);
             JSONObject json = JSON.parseObject(obj);
@@ -28,14 +38,18 @@ public class LoginController {
             password = json.getString("password");
             try {
                 User user = temp.getUser(username);
-                if (user.getPassword().equals(password)) {
+                if (user.getPassword().equals(password)) { // 登录成功
                     resultMap.put("info", "success");
+                    cc.addCookie("isLogin", "true", "/", "localhost");
+                    cc.addCookie("username", username, "/", "localhost");
+                    // 新的cookie已经add到了response中
+                    cc.showCookies();
                     return resultMap;
                 } else {
-                    resultMap.put("info", "wrong_pwd");
+                    resultMap.put("info", "wrong_pwd"); // 密码错误
                     return resultMap;
                 }
-            } catch (EmptyResultDataAccessException e) {
+            } catch (EmptyResultDataAccessException e) { // 用户不存在
                 resultMap.put("info", "not_found");
                 return resultMap;
             }

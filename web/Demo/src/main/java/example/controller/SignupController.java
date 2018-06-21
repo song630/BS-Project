@@ -7,17 +7,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
-// import javax.servlet.http.HttpServletRequest;
-// import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@RequestMapping("/Hello")
 public class SignupController {
     @ResponseBody // 此批注是ajax获取返回值使用
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "main/submit_signup", method = RequestMethod.GET)
+    @RequestMapping(value = "/submit_signup", method = RequestMethod.GET)
     public Map<String, String> SignupUser(@RequestParam String obj) {
         Map<String, String> resultMap = new HashMap<String, String>();
         try {
