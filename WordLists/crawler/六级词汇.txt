@@ -1153,7 +1153,6 @@ module
 molecular
 momentary
 monarch
-monk
 monopoly
 monster
 monstrous

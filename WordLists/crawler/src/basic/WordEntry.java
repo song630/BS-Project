@@ -28,15 +28,19 @@ public class WordEntry {
             while ((buf = in.readLine()) != null) {
                 if (buf.contains("\"pronounce\">美")) { // 美式发音
                     buf = in.readLine();
-                    symbols = buf.substring(buf.indexOf("["), buf.indexOf("]") + 1);
+                    if (buf.indexOf('[') == -1)
+                        symbols = "[]";
+                    else
+                        symbols = buf.substring(buf.indexOf("["), buf.indexOf("]") + 1); // 保存音标
                 }
                 if (buf.contains("pos wordGroup")) { // 词性
-                    String pos = buf.substring(buf.indexOf(">") + 1, buf.indexOf("</"));
+                    // 得到词性 用{}标记
+                    String pos = "{" + buf.substring(buf.indexOf(">") + 1, buf.indexOf("</")) + "}";
                     poses.add(pos);
                     Vector<String> exp_of_pos = new Vector<>();
                     while (!(buf = in.readLine()).contains("</ul>")) { // 没有读到下一个词性
-                        if (buf.contains("class=\"def\"")) {
-                            exp_of_pos.add(buf.substring(buf.indexOf("class=\"def\"") + 1, buf.indexOf("</span>") - 1));
+                        if (buf.contains("class=\"def\"")) { // 这个词性的某个释义 用++ **标记
+                            exp_of_pos.add("++" + buf.substring(buf.indexOf("class=\"def\"") + 12, buf.indexOf("</span>")) + "**");
                         }
                     }
                     explanations.add(exp_of_pos); // 加入这个词性的所有释义
@@ -53,9 +57,9 @@ public class WordEntry {
                     antonyms = buf.substring(buf.indexOf("hy") + 4, buf.indexOf("</a>"));
                     // flag2 = false;
                 }
-                if (buf.contains("<p><span")) { // 一个例句
+                if (buf.contains("<p><span")) { // 一个例句 用++ **标记
                     String text = buf.replaceAll("</?[^>]+>", ""); // 提取纯文本
-                    sentences.add(text);
+                    sentences.add("++" + text.trim() + "**");
                 }
                 if (buf.contains("更多双语例句")) break;
             }
