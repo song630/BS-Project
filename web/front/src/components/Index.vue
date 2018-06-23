@@ -7,7 +7,7 @@
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-setting"></i>用户信息管理</template>
             <el-menu-item-group>
-              <el-menu-item index="1-1">选项1</el-menu-item>
+              <el-menu-item index="1-1" @click="$router.push($router.options.routes[1].children[0].path)">我的信息</el-menu-item>
               <el-menu-item index="1-2">选项2</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
@@ -28,22 +28,27 @@
 
       <el-container>
         <el-header>
-          <h2 class="header-title">背单词网站</h2>
+          <el-breadcrumb separator-class="el-icon-arrow-right" style="float: left; margin-top: 22px;">
+            <el-breadcrumb-item :to="$router.options.routes[0].children[0].path">
+              <b style="cursor: pointer">首页</b>
+            </el-breadcrumb-item>
+          </el-breadcrumb>
+          <h2 class="header-title" style="margin-left: 50px;">背单词网站</h2>
           <LoginDialog class="login-dialog" @login_success="change_login_name"></LoginDialog><!-- 登录页面 -->
           <SignUpDialog class="signup-dialog"></SignUpDialog><!-- 注册页面 -->
+          <LogoutDialog class="logout-dialog" @logout_success="on_logout"></LogoutDialog><!-- 退出页面 -->
           <span class="header-others">{{ username }}</span>
         </el-header>
 
         <el-main>
-          <el-table :data="tableData">
-            <el-table-column prop="date" label="日期" width="140">
-            </el-table-column>
-            <el-table-column prop="name" label="姓名" width="120">
-            </el-table-column>
-            <el-table-column prop="address" label="地址">
-            </el-table-column>
-          </el-table>
+          <router-view>
+          </router-view>
         </el-main>
+
+        <el-footer>
+          <div>Designed by Yizhi Song, using Vue.js and ElementUI</div>
+          <div>{{ this.date }}</div>
+        </el-footer>
 
       </el-container>
     </el-container>
@@ -53,19 +58,44 @@
 <script>
 import LoginDialog from './small/LoginDialog'
 import SignUpDialog from './small/SignUpDialog'
+import LogoutDialog from './small/LogoutDialog'
+import { delCookie, setCookie, getCookie } from '../util.js'
 export default {
   name: 'Index',
-  components: { LoginDialog, SignUpDialog },
+  components: { LoginDialog, SignUpDialog, LogoutDialog },
   data () {
     return {
       username: 'Guest',
-      tableData: Array(10).fill({date: '2016-05-02', name: 'ABC', address: 'Address'})
+      isLogin: false,
+      tableData: Array(10).fill({date: '2016-05-02', name: 'ABC', address: 'Address'}),
+      date: ''
     }
   },
   methods: {
     change_login_name (param) { // 把guest改为子组件传过来的用户名
       this.username = param
+      this.isLogin = true
+      setCookie('isLogin', 'true', 1)
+    },
+    on_logout () { // 用户已经登出
+      this.username = 'guest'
+      this.isLogin = false
+      delCookie('username')
+      setCookie('isLogin', 'false', 1)
+      console.log('cookies: ', document.cookie)
     }
+  },
+  mounted: function () {
+    let nowDate = new Date()
+    let year = nowDate.getFullYear()
+    let month = nowDate.getMonth() + 1
+    let day = nowDate.getDate()
+    this.date = (year + '-') + (month + '-') + day
+    // setCookie('isLogin', 'false', 1)
+    if (getCookie('username') === null) {
+      this.isLogin = false
+    }
+    console.log('cookies: ', document.cookie)
   }
 }
 </script>
@@ -93,7 +123,7 @@ export default {
   font-size: 12px;
   margin-right: 8px;
 }
-.login-dialog, .signup-dialog {
+.login-dialog, .signup-dialog, .logout-dialog {
   float: right;
   cursor: pointer;
 }
@@ -101,5 +131,14 @@ export default {
   color: #333;
   width: 200px;
   background-color: rgb(238, 241, 246);
+}
+.el-main {
+  height: 500px;
+}
+.el-footer {
+  border-top: solid 1px #eee;
+  padding-top: 10px;
+  color: #888888;
+  font-size: 0.8em;
 }
 </style>

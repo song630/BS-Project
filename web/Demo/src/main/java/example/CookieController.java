@@ -24,6 +24,7 @@ public class CookieController {
         }
     }
 
+    // 也可以作为更新函数 写入同名cookie会直接覆盖
     public void addCookie(final String name, final String value, final String path, final String domain){
         Cookie cookie = new Cookie(name, value); // 创建新cookie
         cookie.setMaxAge(5 * 60); // 设置存在时间
@@ -52,23 +53,6 @@ public class CookieController {
                     return cookie.getValue();
             }
             return null;
-        }
-    }
-
-    public void updateCookie(final String name, final String new_value, final String path, final int age) {
-        Cookie[] cookies = this.request.getCookies();
-        if (null == cookies) {
-            System.out.println("no cookies.");
-        } else {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals(name)) {
-                    cookie.setValue(new_value);
-                    cookie.setPath(path);
-                    cookie.setMaxAge(age);
-                    response.addCookie(cookie);
-                    break;
-                }
-            }
         }
     }
 

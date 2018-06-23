@@ -1,6 +1,6 @@
 <template>
   <div style="cursor: default">
-    <el-button type="text" @click="dialogFormVisible = true">登录</el-button>
+    <el-button type="text" @click="buttonClicked">登录</el-button>
     <el-dialog title="用户登录" :visible.sync="dialogFormVisible">
       <el-form :model="form" ref="login_form" status-icon :rules="login_rules">
         <el-form-item label="用户名" :label-width="formLabelWidth" prop="username">
@@ -24,6 +24,7 @@
 
 <script>
 import $ from 'jquery'
+import { getCookie } from '../../util.js'
 export default {
   name: 'LoginDialog',
   data () {
@@ -64,6 +65,14 @@ export default {
     }
   },
   methods: {
+    buttonClicked: function () {
+      let status = getCookie('isLogin')
+      if (status === 'true') { // 已经登录
+        alert('已经登录')
+      } else {
+        this.dialogFormVisible = true
+      }
+    },
     submit: function (formName) {
       let canSubmit = false
       this.$refs[formName].validate((valid) => {
@@ -90,6 +99,7 @@ export default {
               alert('登录成功')
               this.dialogFormVisible = false
               // 改变上层组件显示的username (默认guest)
+              console.log('cookies: ', document.cookie)
               this.$emit('login_success', this.form.username)
             } else if (result.info === 'wrong_pwd') {
               alert('密码错误')

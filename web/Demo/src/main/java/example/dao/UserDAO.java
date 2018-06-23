@@ -11,6 +11,7 @@ public interface UserDAO {
     // list one record
     public User getUser(String username);
     public boolean isUsernameExist(String username);
+    public boolean isEmailExist(String email);
     // list down all records
     public List<User> listUsers();
     public void delete(String username);

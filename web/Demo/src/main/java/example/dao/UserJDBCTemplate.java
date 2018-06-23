@@ -43,6 +43,18 @@ public class UserJDBCTemplate implements UserDAO {
     }
 
     @Override
+    public boolean isEmailExist(String email) {
+        String sql = "select email from user where email = ?;";
+        try {
+            String res = jdbcTemp.queryForObject(sql, new Object[]{email}, java.lang.String.class);
+            System.out.println("res: " + res);
+            return res.equals(email);
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
+    }
+
+    @Override
     public List<User> listUsers() {
         String sql = "select * from user;";
         return jdbcTemp.query(sql, new UserMapper());

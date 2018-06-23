@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <router-view/>
-    <!-- router-link to=/ 表示就显示在当前页面上 -->
-    <!-- <router-link to="/" class="router-link">主页</router-link> -->
-    <!-- <el-button type="primary" icon="el-icon-search">搜索</el-button> -->
+    <!-- router-link to=/ 表示就显示在当前页面上
+    <router-link to="/" class="router-link">主页</router-link>
+    <el-button type="primary" icon="el-icon-search">搜索</el-button>
     <h1>{{ serverData }}</h1>
-    <button @click="getData">获取数据</button>
+    <button @click="getData">获取数据</button> -->
   </div>
 </template>
 

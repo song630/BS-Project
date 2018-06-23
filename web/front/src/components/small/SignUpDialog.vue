@@ -150,9 +150,11 @@ export default {
             if (result.info === 'success') {
               alert('注册成功')
               this.dialogFormVisible = false
-            } else if (result.info === 'existed') {
+            } else if (result.info === 'user_existed') {
               alert('用户名已经存在')
               this.dialogFormVisible = true
+            } else if (result.info === 'email_existed') {
+              alert('邮箱已被注册')
             } else {
               alert('注册失败')
               this.dialogFormVisible = true
