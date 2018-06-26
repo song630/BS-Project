@@ -15,8 +15,8 @@
             <el-menu-item-group>
               <el-menu-item index="2-1" @click="$router.push($router.options.routes[2].children[0].path)">选择单词书</el-menu-item><!-- 包含自定义单词书 -->
               <el-menu-item index="2-2">背单词</el-menu-item>
-              <el-menu-item index="2-3">制定计划</el-menu-item>
-              <el-menu-item index="2-3">复习</el-menu-item>
+              <el-menu-item index="2-3" @click="$router.push($router.options.routes[3].children[0].path)">制定计划</el-menu-item>
+              <el-menu-item index="2-4">复习</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           <el-submenu index="3">

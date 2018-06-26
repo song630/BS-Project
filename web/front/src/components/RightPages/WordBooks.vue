@@ -1,16 +1,18 @@
 <template>
   <div>
   <!-- 若干个卡片 -->
-  <el-card class="box-card" v-for="(item, index) in booksInfo" :key="index">
+  <el-card class="box-card" v-for="(item, index) in booksInfo" :key="index" style="margin-bottom: 20px;">
     <div slot="header" class="clearfix">
-      <span>书名：{{ item.title }} 单词量：{{ item.num }}</span>
+      <span style="float: left">书名：{{ item.title }} 单词量：{{ item.num }}</span>
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
     <!-- 加入几个按钮 开始学习 开始背单词 制定计划-有推荐计划 -->
     <ChangeStudying v-if="item.title !== studying" @changeStudying="change(item.title)"></ChangeStudying>
-    <el-button type="primary" v-if="item.title === studying">开始背单词</el-button>
-    <el-button type="primary" v-if="item.title === studying">制定计划</el-button>
-    <el-button type="primary">浏览单词书</el-button>
+    <el-button type="primary" style="float: left;">浏览单词书</el-button>
+    <el-button type="primary" v-if="item.title === studying" style="float: left;">开始背单词</el-button>
+    <el-button type="primary" v-if="item.title === studying" style="float: left;" @click="$router.push($router.options.routes[3].children[0].path)">
+      制定计划
+    </el-button>
   </el-card>
 </div>
 </template>
@@ -35,7 +37,7 @@ export default {
         data: {},
         success: (result) => { // result是java中的Map<>
           if (result.info === 'success') {
-            this.$router.replace('/wordBooks') // 重新加载
+            this.studying = bookTitle
           } else {
             alert('改变单词书失败')
           } // ===== 注意 后期加上 不能选择自定义单词书 =====
@@ -71,7 +73,7 @@ export default {
         console.log('WordBooks mounted, result:', result)
         console.log('WordBooks, cookies:', document.cookie)
         this.numBooks = result.length
-        this.booksInfo.concat(result) // 数组拼接
+        this.booksInfo = Array(0).concat(result) // 数组拼接
         // ===== 注意 后期加上 登出后要删除相应的cookie =====
         this.studying = getCookie('studying')
       },
@@ -100,5 +102,9 @@ export default {
 }
 .box-card {
   width: 480px;
+}
+.el-button {
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 </style>

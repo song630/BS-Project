@@ -38,4 +38,19 @@ public class LoadBooksController { // ===== 重要 后期要加上自定义单�
             return null;
         }
     }
+
+    @ResponseBody
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping(value = "/get_book/{title}", method = RequestMethod.GET)
+    public WordBook getBook(@PathVariable String title) {
+        System.out.println("getBook, title: " + title);
+        try {
+            ApplicationContext context = new ClassPathXmlApplicationContext("file:D://courses/3.2/BS/BS-Project/web/Demo/src/main/webapp/WEB-INF/applicationContext.xml");
+            WordBookJDBCTemplate bookTemp = (WordBookJDBCTemplate) context.getBean("wordBookJDBCTemplate");
+            return bookTemp.getWordBook(title);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

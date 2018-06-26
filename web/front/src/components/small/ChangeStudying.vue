@@ -1,6 +1,6 @@
 <template>
   <div style="cursor: default">
-    <el-button type="success" @click="dialogVisible = true">
+    <el-button type="success" @click="dialogVisible = true" style="float: left; margin-bottom: 20px; margin-right: 10px;">
       开始学习
     </el-button>
     <el-dialog title="切换单词书" :visible.sync="dialogVisible" width="30%">
