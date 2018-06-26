@@ -1,6 +1,8 @@
 <template>
   <div style="cursor: default">
-    <el-button type="danger" icon="el-icon-delete" @click="this.dialogVisible = true">注销用户</el-button>
+    <el-button type="danger" icon="el-icon-delete" @click="dialogVisible = true" style="float: left; margin-left: 10px;">
+      注销用户
+    </el-button>
     <el-dialog title="注销用户" :visible.sync="dialogVisible" width="30%">
       <span style="color: red">注销用户会删除一切相关信息</span>
       <span slot="footer" class="dialog-footer">

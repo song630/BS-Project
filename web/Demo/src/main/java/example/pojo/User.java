@@ -1,5 +1,7 @@
 package example.pojo;
+import org.springframework.context.annotation.Configuration;
 
+@Configuration  // 注册为Bean
 public class User {
     private String username;
     private String password;

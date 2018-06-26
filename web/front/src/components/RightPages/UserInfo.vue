@@ -30,11 +30,13 @@
           <el-input v-model="form.email" :disabled="!isModifyClicked"></el-input>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitReset('reset_form')">
+          <el-button type="primary" @click="submitReset('reset_form')" style="float: left;">
             {{ isModifyClicked ? msg[1] : msg[0] }}
           </el-button>
           <DeleteDialog @delete_success="on_delete"></DeleteDialog>
-          <el-button :disabled="!isModifyClicked" @click="isModifyClicked = false">取消</el-button>
+          <el-button :disabled="!isModifyClicked" @click="isModifyClicked = false" style="float: left; margin-left: 10px;">
+            取消
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -119,8 +121,8 @@ export default {
   },
   methods: {
     on_delete: function () {
-      delCookie('username')
-      delCookie('isLogin')
+      delCookie('username', 1)
+      delCookie('isLogin', 1)
       this.$router.replace('/') // 删除账号后自动回到首页
     },
     submitReset: function (formName) {
@@ -168,6 +170,7 @@ export default {
   mounted: function () {
     console.log('UserInfo mounted, cookies: ', document.cookie)
     console.log('UserInfo mounted, username: ', getCookie('username'))
+    console.log('UserInfo mounted, isLogin: ', getCookie('Login'))
     $.ajax({
       type: 'GET',
       url: 'http://localhost:8080/Hello/get_userInfo/' + getCookie('username'),

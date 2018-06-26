@@ -1,8 +1,10 @@
 package example.dao;
 import example.pojo.User;
+
+import java.io.StringReader;
 import java.util.List;
 import javax.sql.DataSource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -11,6 +13,7 @@ public class UserJDBCTemplate implements UserDAO {
     private JdbcTemplate jdbcTemp;
 
     @Override
+    @Autowired // 根据类型自动装配
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcTemp = new JdbcTemplate(dataSource);
@@ -48,6 +51,7 @@ public class UserJDBCTemplate implements UserDAO {
         try {
             String res = jdbcTemp.queryForObject(sql, new Object[]{email}, java.lang.String.class);
             System.out.println("res: " + res);
+            System.out.println("done.");
             return res.equals(email);
         } catch (EmptyResultDataAccessException e) {
             return false;
@@ -70,7 +74,25 @@ public class UserJDBCTemplate implements UserDAO {
     @Override
     public void resetPassword(String username, String newPassword) {
         String sql = "update user set password = ? where username = ?;";
-        jdbcTemp.update(sql, username, newPassword);
+        jdbcTemp.update(sql, newPassword, username);
         System.out.println("Updated record with username = " + username);
+    }
+
+    @Override
+    public String getStudying(String username) {
+        String sql = "select studying from user where username = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{username}, java.lang.String.class);
+    }
+
+    @Override
+    public boolean setStudying(String username, String newTitle) {
+        String sql = "update user set studying = ? where username = ?;";
+        try {
+            jdbcTemp.update(sql, newTitle, username);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

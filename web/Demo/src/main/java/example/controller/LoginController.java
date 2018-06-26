@@ -27,6 +27,7 @@ public class LoginController {
         response.setHeader("Access-Control-Allow-Credentials", "true");
         Map<String, String> resultMap = new HashMap<String, String>();
         CookieController cc = new CookieController(request, response);
+        System.out.print("LoginUser, ");
         cc.showCookies();
         try {
             System.out.println("received: " + obj);
@@ -43,6 +44,7 @@ public class LoginController {
                     cc.addCookie("isLogin", "true", "/", "localhost");
                     cc.addCookie("username", username, "/", "localhost");
                     // 新的cookie已经add到了response中
+                    System.out.print("LoginUser, ");
                     cc.showCookies();
                     return resultMap;
                 } else {

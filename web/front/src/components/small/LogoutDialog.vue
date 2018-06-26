@@ -24,7 +24,7 @@ export default {
     buttonClicked () {
       let status = getCookie('isLogin')
       console.log('status: ', status)
-      if (status === 'false') {
+      if (status === 'false' || status === null || status === 'null') {
         alert('用户未登录')
       } else {
         this.dialogVisible = true

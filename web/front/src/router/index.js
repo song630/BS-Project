@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '@/components/Index'
 import UserInfo from '@/components/RightPages/UserInfo'
 import HomeIndex from '@/components/RightPages/HomeIndex'
+import WordBooks from '@/components/RightPages/WordBooks'
 import { getCookie } from '../util.js'
 
 Vue.use(Router)
@@ -22,6 +23,14 @@ const routes = [
     component: Index,
     children: [
       { path: '/userInfo', component: UserInfo, name: 'UserInfo', meta: { requireAuth: true } }
+    ]
+  },
+  {
+    path: '/',
+    name: 'wordBooks,',
+    component: Index, // 单词书页面
+    children: [
+      { path: '/wordBooks', component: WordBooks, name: 'WordBooks', meta: { requireAuth: true } }
     ]
   }
 ]

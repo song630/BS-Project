@@ -14,6 +14,7 @@
     </bean>
 
     <!-- Definition for studentJDBCTemplate bean -->
+    <!-- ref: 自动装配by type -->
     <bean id="userJDBCTemplate"
           class="example.dao.UserJDBCTemplate">
         <property name="dataSource" ref="dataSource" />

@@ -19,7 +19,7 @@ export default {
     }
   },
   methods: {
-    getData () {
+    getData () { // a test function
       $.ajax({
         type: 'GET', // 222.205.124.205
         url: 'http://localhost:8080/Hello/getperson/33333',

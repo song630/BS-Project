@@ -93,13 +93,13 @@ export default {
           },
           dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
-          success: (result) => {
+          success: (result) => { // 后端添加了2个cookie
             console.log('result:', result)
             if (result.info === 'success') {
               alert('登录成功')
               this.dialogFormVisible = false
               // 改变上层组件显示的username (默认guest)
-              console.log('cookies: ', document.cookie)
+              console.log('LoginDialog, after login, cookies: ', document.cookie)
               this.$emit('login_success', this.form.username)
             } else if (result.info === 'wrong_pwd') {
               alert('密码错误')
