@@ -32,7 +32,8 @@ const routes = [
     name: 'wordBooks', // 单词书页面
     component: Index,
     children: [
-      { path: '/wordBooks', component: WordBooks, name: 'WordBooks', meta: { requireAuth: true } }
+      { path: '/wordBooks', component: WordBooks, name: 'WordBooks', meta: { requireAuth: true } },
+      { path: '/wordInfo', component: WordInfo, name: 'WordInfo', meta: { requireAuth: true } }
     ]
   },
   {
@@ -41,14 +42,6 @@ const routes = [
     component: Index,
     children: [
       { path: '/plan', component: Plan, name: 'Plan', meta: { requireAuth: true } }
-    ]
-  },
-  {
-    path: '/',
-    name: 'wordInfo',
-    component: WordInfo,
-    children: [
-      { path: '/wordInfo', component: WordInfo, name: 'WordInfo', meta: { requireAuth: true } }
     ]
   }
 ]

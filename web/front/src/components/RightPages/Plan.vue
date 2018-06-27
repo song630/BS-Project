@@ -48,32 +48,28 @@ export default {
     }
   },
   mounted: function () {
-    if (getCookie('studying') === 'none' || getCookie('studying') === null) {
-      alert('未选择单词书')
-    } else {
-      $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/Hello/get_book/' + getCookie('studying'),
-        crossDomain: true,
-        xhrFields: {
-          withCredentials: true
-        },
-        dataType: 'json',
-        data: {},
-        success: (result) => {
-          if (result === null) {
-            alert('获取单词书信息失败')
-          } else {
-            this.studying = result.title
-            this.num = result.num
-            this.msg = '书名：' + this.studying + '  单词数：' + this.num
-          }
-        },
-        error: function () {
-          alert('获取单词书信息失败')
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:8080/Hello/get_book/' + getCookie('username'),
+      crossDomain: true,
+      xhrFields: {
+        withCredentials: true
+      },
+      dataType: 'json',
+      data: {},
+      success: (result) => {
+        if (result === null) {
+          alert('获取单词书信息失败或未选择单词书')
+        } else {
+          this.studying = result.title
+          this.num = result.num
+          this.msg = '书名：' + this.studying + '  单词数：' + this.num
         }
-      })
-    }
+      },
+      error: function () {
+        alert('获取单词书信息失败')
+      }
+    })
   }
 }
 </script>

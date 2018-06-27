@@ -41,12 +41,16 @@ public class LoadBooksController { // ===== 重要 后期要加上自定义单�
 
     @ResponseBody
     @CrossOrigin(origins = "*", maxAge = 3600)
-    @RequestMapping(value = "/get_book/{title}", method = RequestMethod.GET)
-    public WordBook getBook(@PathVariable String title) {
-        System.out.println("getBook, title: " + title);
+    @RequestMapping(value = "/get_book/{user}", method = RequestMethod.GET)
+    public WordBook getBook(@PathVariable String user) { // 进入制定计划页面时调用
+        System.out.println("getBook, user: " + user);
         try {
             ApplicationContext context = new ClassPathXmlApplicationContext("file:D://courses/3.2/BS/BS-Project/web/Demo/src/main/webapp/WEB-INF/applicationContext.xml");
             WordBookJDBCTemplate bookTemp = (WordBookJDBCTemplate) context.getBean("wordBookJDBCTemplate");
+            UserJDBCTemplate userTemp = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
+            String title = userTemp.getStudying(user);
+            if (title.equals("none")) // 没有正在学习的单词书
+                return null;
             return bookTemp.getWordBook(title);
         } catch (Exception e) {
             e.printStackTrace();

@@ -8,8 +8,13 @@
     </div>
     <!-- 加入几个按钮 开始学习 开始背单词 制定计划-有推荐计划 -->
     <ChangeStudying v-if="item.title !== studying" @changeStudying="change(item.title)"></ChangeStudying>
-    <el-button type="primary" style="float: left;">浏览单词书</el-button>
-    <el-button type="primary" v-if="item.title === studying" style="float: left;">开始背单词</el-button>
+    <!-- 通过路由传递参数 -->
+    <el-button type="primary" style="float: left;" @click="$router.push({path: $router.options.routes[2].children[1].path, query: {num: item.num, title: item.title}})">
+      浏览单词书
+    </el-button>
+    <el-button type="primary" v-if="item.title === studying" style="float: left;">
+      开始背单词
+    </el-button>
     <el-button type="primary" v-if="item.title === studying" style="float: left;" @click="$router.push($router.options.routes[3].children[0].path)">
       制定计划
     </el-button>
@@ -75,7 +80,7 @@ export default {
         this.numBooks = result.length
         this.booksInfo = Array(0).concat(result) // 数组拼接
         // ===== 注意 后期加上 登出后要删除相应的cookie =====
-        this.studying = getCookie('studying')
+        this.studying = getCookie('studying') // 后端设置了cookie
       },
       error: function () {
         alert('单词书加载失败')
