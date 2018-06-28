@@ -27,9 +27,13 @@ public class ChangeController {
         try {
             ApplicationContext context = new ClassPathXmlApplicationContext("file:D://courses/3.2/BS/BS-Project/web/Demo/src/main/webapp/WEB-INF/applicationContext.xml");
             UserJDBCTemplate temp = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
-            // ===== 后期更改 清除旧单词书的一些信息 =====
-            String oldBook = cc.getValue("studying");
-            temp.setStudying(cc.getValue("username"), newTitle); // 改写数据库
+            // ===== 后期更改 清除旧单词书的一些信息 (2018.6.27已经更改) =====
+            String oldTitle = cc.getValue("studying");
+            if (oldTitle.equals(newTitle)) {
+                resultMap.put("info", "error");
+                return resultMap;
+            }
+            temp.setStudying(cc.getValue("username"), newTitle);
             cc.addCookie("studying", newTitle, "/", "localhost"); // 更改cookie
             resultMap.put("info", "success");
             return resultMap;

@@ -85,14 +85,33 @@ public class UserJDBCTemplate implements UserDAO {
     }
 
     @Override
-    public boolean setStudying(String username, String newTitle) {
-        String sql = "update user set studying = ? where username = ?;";
-        try {
-            jdbcTemp.update(sql, newTitle, username);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
+    public void setStudying(String username, String newTitle) {
+        // ===== 不确定是否加单引号
+        String sql = "update user set studying = ?, studied = '0', plan = '20', finished = '0' where username = ?;";
+        jdbcTemp.update(sql, newTitle, username);
+    }
+
+    @Override
+    public void setPlan(String user, int num) {
+        String sql = "update user set plan = ? where username = ?;";
+        jdbcTemp.update(sql, num, user);
+    }
+
+    @Override
+    public int getPlan(String user) {
+        String sql = "select plan from user where username = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{user}, java.lang.Integer.class);
+    }
+
+    @Override
+    public int getStudied(String user) {
+        String sql = "select studied from user where username = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{user}, java.lang.Integer.class);
+    }
+
+    @Override
+    public void updateStudied(String user, int num) {
+        String sql = "update user set studied = studied + ? where username = ?;";
+        jdbcTemp.update(sql, num, user);
     }
 }

@@ -97,9 +97,7 @@ export default {
               if (i === 0) {
                 pair[0] = pair[0].replace('{', '')
               }
-              console.log('WordInfo, pair[0]:', pair[0])
               let exps = pair[1].split('**++') // 一个词性对应的若干释义
-              console.log('WordInfo, exps:', exps)
               exps[0] = exps[0].replace('++', '')
               exps[exps.length - 1] = exps[exps.length - 1].replace('**', '')
               let temp = { pos: pair[0], exps: exps }

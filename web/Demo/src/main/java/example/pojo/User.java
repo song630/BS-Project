@@ -8,6 +8,10 @@ public class User {
     private String email;
     private String phone;
     private String education;
+    private String studying;
+    private int studied;
+    private int plan;
+    private int finished;
 
     public void setUsername(String username) {
         this.username = username;
@@ -47,5 +51,37 @@ public class User {
 
     public String getEducation() {
         return education;
+    }
+
+    public void setStudying(String studying) {
+        this.studying = studying;
+    }
+
+    public String getStudying() {
+        return studying;
+    }
+
+    public void setStudied(int studied) {
+        this.studied = studied;
+    }
+
+    public int getStudied() {
+        return studied;
+    }
+
+    public void setPlan(int plan) {
+        this.plan = plan;
+    }
+
+    public int getPlan() {
+        return plan;
+    }
+
+    public void setFinished(int finished) {
+        this.finished = finished;
+    }
+
+    public int getFinished() {
+        return finished;
     }
 }

@@ -29,4 +29,10 @@ public class WordBookJDBCTemplate implements WordBookDAO {
         String sql = "select * from wordbooks;";
         return jdbcTemp.query(sql, new WordBookMapper());
     }
+
+    @Override
+    public int getNum(String title) {
+        String sql = "select num from wordbooks where title = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{title}, java.lang.Integer.class);
+    }
 }

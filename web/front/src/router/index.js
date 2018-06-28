@@ -6,6 +6,8 @@ import HomeIndex from '@/components/RightPages/HomeIndex'
 import WordBooks from '@/components/RightPages/WordBooks'
 import Plan from '@/components/RightPages/Plan'
 import WordInfo from '@/components/RightPages/WordInfo'
+import Start from '@/components/RightPages/Start'
+import WordCard from '@/components/RightPages/WordCard'
 import { getCookie } from '../util.js'
 
 Vue.use(Router)
@@ -13,7 +15,7 @@ Vue.use(Router)
 const routes = [
   {
     path: '/',
-    name: 'Index', // 首页
+    name: 'Index', // 首页 [0]
     component: Index,
     children: [
       { path: '/', component: HomeIndex, name: 'HomeIndex' }
@@ -21,7 +23,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'userInfo', // 用户信息页
+    name: 'userInfo', // 用户信息页 [1]
     component: Index,
     children: [
       { path: '/userInfo', component: UserInfo, name: 'UserInfo', meta: { requireAuth: true } }
@@ -29,7 +31,7 @@ const routes = [
   },
   {
     path: '/',
-    name: 'wordBooks', // 单词书页面
+    name: 'wordBooks', // 单词书页面 [2]
     component: Index,
     children: [
       { path: '/wordBooks', component: WordBooks, name: 'WordBooks', meta: { requireAuth: true } },
@@ -38,10 +40,20 @@ const routes = [
   },
   {
     path: '/',
-    name: 'plan', // 制定背单词计划页面
+    name: 'plan', // 制定背单词计划页面 [3]
     component: Index,
     children: [
       { path: '/plan', component: Plan, name: 'Plan', meta: { requireAuth: true } }
+    ]
+  },
+  {
+    path: '/',
+    name: 'memorize', // 背单词页面 [4]
+    component: Index,
+    children: [
+      { path: '/start', component: Start, name: 'Start', meta: { requireAuth: true } },
+      { path: '/wordCard', component: WordCard, name: 'WordCard', meta: { requireAuth: true } }
+      // 可能还要加一个单词的详细信息页面
     ]
   }
 ]
