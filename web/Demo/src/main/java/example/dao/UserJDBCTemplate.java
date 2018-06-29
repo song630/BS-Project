@@ -1,7 +1,5 @@
 package example.dao;
 import example.pojo.User;
-
-import java.io.StringReader;
 import java.util.List;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,7 @@ public class UserJDBCTemplate implements UserDAO {
     @Override
     public void create(String username, String password, String email, String phone, String education) {
         String sql = "insert into user(username, password, email, phone, education)" +
-                " values(?, ?, ?, ?, ?)";
+                " values(?, ?, ?, ?, ?);";
         jdbcTemp.update(sql, username, password, email, phone, education);
         System.out.println("Created record username = " + username);
     }
@@ -113,5 +111,11 @@ public class UserJDBCTemplate implements UserDAO {
     public void updateStudied(String user, int num) {
         String sql = "update user set studied = studied + ? where username = ?;";
         jdbcTemp.update(sql, num, user);
+    }
+
+    @Override
+    public void updateDate(String user, String date) {
+        String sql = "update user set lastDate = ? where username = ?;";
+        jdbcTemp.update(sql, date, user);
     }
 }

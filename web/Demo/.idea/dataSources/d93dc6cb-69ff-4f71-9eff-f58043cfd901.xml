@@ -1110,36 +1110,286 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="279" parent="2" name="user"/>
-    <column id="280" parent="279" name="username">
+    <table id="279" parent="2" name="cet6wordbook"/>
+    <table id="280" parent="2" name="daily"/>
+    <table id="281" parent="2" name="grewordbook"/>
+    <table id="282" parent="2" name="privatebooks"/>
+    <table id="283" parent="2" name="toeflwordbook"/>
+    <table id="284" parent="2" name="user"/>
+    <table id="285" parent="2" name="wordbooks"/>
+    <column id="286" parent="279" name="id">
+      <Position>1</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="287" parent="279" name="word">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="288" parent="279" name="phonetic">
+      <Position>3</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="289" parent="279" name="pron">
+      <Position>4</Position>
+      <DataType>varchar(60)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="290" parent="279" name="poses">
+      <Position>5</Position>
+      <DataType>varchar(1800)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="291" parent="279" name="sentences">
+      <Position>6</Position>
+      <DataType>varchar(800)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="292" parent="279" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="293" parent="280" name="username">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="279" name="password">
+    <column id="294" parent="280" name="yes">
+      <Position>2</Position>
+      <DataType>varchar(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="295" parent="280" name="word">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="296" parent="280" name="id">
+      <Position>4</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="297" parent="280" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username
+id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="298" parent="281" name="id">
+      <Position>1</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="299" parent="281" name="word">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="279" name="email">
+    <column id="300" parent="281" name="phonetic">
+      <Position>3</Position>
+      <DataType>varchar(60)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="301" parent="281" name="pron">
+      <Position>4</Position>
+      <DataType>varchar(60)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="302" parent="281" name="poses">
+      <Position>5</Position>
+      <DataType>varchar(1800)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="303" parent="281" name="sentences">
+      <Position>6</Position>
+      <DataType>varchar(1000)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="304" parent="281" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="305" parent="282" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="306" parent="282" name="title">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="282" name="origin">
+      <Position>3</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="282" name="id">
+      <Position>4</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="282" name="word">
+      <Position>5</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="282" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>username
+title
+origin
+id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="311" parent="283" name="id">
+      <Position>1</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="283" name="word">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="313" parent="283" name="phonetic">
+      <Position>3</Position>
+      <DataType>varchar(45)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="314" parent="283" name="pron">
+      <Position>4</Position>
+      <DataType>varchar(60)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="283" name="poses">
+      <Position>5</Position>
+      <DataType>varchar(1800)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="316" parent="283" name="sentences">
+      <Position>6</Position>
+      <DataType>varchar(800)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="317" parent="283" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="318" parent="284" name="username">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="319" parent="284" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="320" parent="284" name="email">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="279" name="phone">
+    <column id="321" parent="284" name="phone">
       <Position>4</Position>
       <DataType>varchar(11)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="284" parent="279" name="education">
+    <column id="322" parent="284" name="education">
       <Position>5</Position>
       <DataType>enum(&apos;primary&apos;, &apos;junior&apos;, &apos;senior&apos;, &apos;undergraduate&apos;, &apos;graduate&apos;)|0e</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="285" parent="279" name="PRIMARY">
+    <column id="323" parent="284" name="studying">
+      <Position>6</Position>
+      <DataType>varchar(15)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="324" parent="284" name="studied">
+      <Position>7</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="325" parent="284" name="plan">
+      <Position>8</Position>
+      <DataType>decimal(3)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="326" parent="284" name="lastDate">
+      <Position>9</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="284" name="day1">
+      <Position>10</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="328" parent="284" name="day2">
+      <Position>11</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="329" parent="284" name="day3">
+      <Position>12</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="330" parent="284" name="day4">
+      <Position>13</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="331" parent="284" name="day5">
+      <Position>14</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="332" parent="284" name="day6">
+      <Position>15</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="333" parent="284" name="day7">
+      <Position>16</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="334" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>username</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="335" parent="285" name="title">
+      <Position>1</Position>
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="336" parent="285" name="num">
+      <Position>2</Position>
+      <DataType>decimal(4)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="337" parent="285" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>title</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

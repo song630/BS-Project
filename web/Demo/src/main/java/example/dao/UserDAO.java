@@ -24,4 +24,5 @@ public interface UserDAO {
     public int getPlan(String user);
     public int getStudied(String user);
     public void updateStudied(String user, int num);
+    public void updateDate(String user, String date);
 }

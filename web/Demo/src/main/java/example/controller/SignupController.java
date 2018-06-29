@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +38,10 @@ public class SignupController {
                 resultMap.put("info", "email_existed");
                 return resultMap;
             }
+            // ===== 2018.6.28更改: 注册后更新最后一次登录的日期
+            Calendar now = Calendar.getInstance();
+            String date = now.get(Calendar.YEAR) + "-" + (now.get(Calendar.MONTH) + 1) + "-" + now.get(Calendar.DAY_OF_MONTH);
+            temp.updateDate(username, date);
             temp.create(username, password, email, phone, education);
             resultMap.put("info", "success");
             return resultMap;
