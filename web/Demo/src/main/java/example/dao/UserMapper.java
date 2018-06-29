@@ -15,7 +15,6 @@ public class UserMapper implements RowMapper<User> {
         user.setStudying(rs.getString("studying"));
         user.setStudied(rs.getInt("studied"));
         user.setPlan(rs.getInt("plan"));
-        user.setFinished(rs.getInt("finished"));
         user.setLastDate(rs.getString("lastDate"));
         user.setDay1(rs.getInt("day1"));
         user.setDay2(rs.getInt("day2"));

@@ -85,14 +85,6 @@ public class User {
         return plan;
     }
 
-    public void setFinished(int finished) {
-        this.finished = finished;
-    }
-
-    public int getFinished() {
-        return finished;
-    }
-
     public void setLastDate(String lastDate) {
         this.lastDate = lastDate;
     }

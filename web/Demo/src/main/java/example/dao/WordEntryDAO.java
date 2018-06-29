@@ -8,4 +8,7 @@ public interface WordEntryDAO {
     public WordEntry getWordEntry(String word, String title);
     public WordEntry getWordEntry(int id, String title);
     public List<WordEntry> getWordEntryList(int start, int end, String title);
+    public String getPoses(int id, String title);
+    public String getWord(int id, String title);
+    public String getPhonetic(int id, String title);
 }

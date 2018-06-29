@@ -108,7 +108,7 @@ export default {
               alert('找不到用户')
               this.dialogFormVisible = true
             } else {
-              alert('注册失败')
+              alert('登录失败')
               this.dialogFormVisible = true
             }
           },

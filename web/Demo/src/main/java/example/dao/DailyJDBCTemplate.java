@@ -2,6 +2,7 @@ package example.dao;
 import example.pojo.Daily;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
@@ -30,39 +31,45 @@ public class DailyJDBCTemplate implements DailyDAO {
     @Override
     public List<Daily> getAll(String username) {
         String sql = "select * from daily where username = ?;";
-        return jdbcTemp.query(sql, new DailyMapper());
+        return jdbcTemp.query(sql, new Object[]{username}, new DailyMapper());
     }
 
     @Override
     public List<Daily> getYes(String username) {
         String sql = "select * from daily where username = ? and status = 'yes'";
-        return jdbcTemp.query(sql, new DailyMapper());
+        return jdbcTemp.query(sql, new Object[]{username}, new DailyMapper());
     }
 
     @Override
     public List<Daily> getNo(String username) {
         String sql = "select * from daily where username = ? and status = 'no'";
-        return jdbcTemp.query(sql, new DailyMapper());
+        return jdbcTemp.query(sql, new Object[]{username}, new DailyMapper());
     }
 
     @Override
-    public void batchCreate(List<Daily> batch) {
+    public void batchCreate(final List<Daily> batch) {
         String sql = "insert into daily(username, status, word, id) values(?, ?, ?, ?);";
-        jdbcTemp.batchUpdate(sql, new BatchPreparedStatementSetter() {
-            @Override
-            public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
-                Daily d = batch.get(i);
-                preparedStatement.setString(1, d.getUsername());
-                preparedStatement.setString(2, d.getStatus());
-                preparedStatement.setString(3, d.getWord());
-                preparedStatement.setInt(4, d.getId());
-            }
+        try {
+            jdbcTemp.batchUpdate(sql, new BatchPreparedStatementSetter() {
+                @Override
+                public void setValues(PreparedStatement preparedStatement, int i) throws SQLException {
+                    Daily d = batch.get(i);
+                    preparedStatement.setString(1, d.getUsername());
+                    preparedStatement.setString(2, d.getStatus());
+                    preparedStatement.setString(3, d.getWord());
+                    preparedStatement.setInt(4, d.getId());
+                }
 
-            @Override
-            public int getBatchSize() {
-                return batch.size();
-            }
-        });
+                @Override
+                public int getBatchSize() {
+                    return batch.size();
+                }
+            });
+        } catch (DuplicateKeyException e) {
+            System.out.println("batchCreate, duplicate key.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

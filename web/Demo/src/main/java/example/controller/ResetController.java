@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +41,11 @@ public class ResetController {
                 resultMap.put("info", "email_existed");
                 return resultMap;
             }
-            temp.create(username, new_password, email, phone, education);
+            // ===== 2018.6.29更新: 加入日期操作
+            Calendar now = Calendar.getInstance();
+            String date = now.get(Calendar.YEAR) + "-" + (now.get(Calendar.MONTH) + 1) + "-" + now.get(Calendar.DAY_OF_MONTH);
+            int plan = 20;
+            temp.create(username, new_password, email, phone, education, plan, date);
             resultMap.put("info", "success");
             return resultMap;
         } catch (Exception e) {

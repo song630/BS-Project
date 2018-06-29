@@ -30,18 +30,6 @@ insert into user values ('user05', '654321', 'ddd@sina.com', '18812341234', 'sen
 insert into user values ('user06', '654321', 'eee@sina.com', '18812341234', 'senior', 'none', '0', '20', '', '0', '0', '0', '0', '0', '0', '0');
 insert into user values ('user07', '111111', 'fff@sina.com', '18812341234', 'senior', 'none', '0', '20', '', '0', '0', '0', '0', '0', '0', '0');
 
-drop table daily;
-
-create table daily (
-	username	varchar(20),
-	yes			varchar(4),
-	word		varchar(20),
-	id			numeric(4, 0),
-	primary key (username, id)
-);
-
-delete from daily;
-
 drop table privatebooks;
 
 create table privatebooks (

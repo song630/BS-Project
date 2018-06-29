@@ -28,9 +28,11 @@ public class StartController {
             }
             int num = bookTemp.getNum(studying);
             int plan = userTemp.getPlan(user);
+            int studied = userTemp.getStudied(user);
             resultMap.put("num", num + "");
             resultMap.put("plan", plan + "");
             resultMap.put("studying", studying);
+            resultMap.put("studied", studied + "");
             resultMap.put("info", "success");
             return resultMap; // 有4个属性 都是字符串的形式
         } catch (Exception e) {

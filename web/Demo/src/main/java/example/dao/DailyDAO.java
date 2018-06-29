@@ -13,7 +13,7 @@ public interface DailyDAO {
     // 获取一个用户所有掌握的单词
     public List<Daily> getNo(String username);
     // 完成一个list后批量将单词加进去
-    public void batchCreate(List<Daily> batch);
+    public void batchCreate(final List<Daily> batch);
     // 删除表中一个用户的所有单词记录
     public void batchDelete(String username);
 }

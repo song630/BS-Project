@@ -4,8 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-
 import javax.sql.DataSource;
 import java.util.List;
 
@@ -54,17 +52,19 @@ public class PrivateBooksJDBCTemplate implements PrivateBooksDAO {
 
     @Override
     public void deleteAllOfUser(String username) {
-        String sql = "delete * from privatebooks where username = ?;";
+        String sql = "delete from privatebooks where username = ?;";
         jdbcTemp.update(sql, username);
     }
 
     @Override
     public void deleteAllOfTitle(String username, String title) {
-
+        String sql = "delete from privatebooks where username = ? and title = ?;";
+        jdbcTemp.update(sql, username, title);
     }
 
     @Override
     public PrivateBooks getEntry(String username, String title, String word) {
-        return null;
+        String sql = "select * from privatebooks where username = ? and title = ? and word = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{username, title, word}, new PrivateBooksMapper());
     }
 }

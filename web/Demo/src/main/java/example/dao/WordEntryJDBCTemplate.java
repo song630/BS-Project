@@ -35,4 +35,22 @@ public class WordEntryJDBCTemplate implements WordEntryDAO {
         String sql = "select * from " + title + " where id >= ? and id < ?;";
         return jdbcTemp.query(sql, new Object[]{start, end}, new WordEntryMapper());
     }
+
+    @Override
+    public String getPoses(int id, String title) {
+        String sql = "select poses from " + title + " where id = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{id}, java.lang.String.class);
+    }
+
+    @Override
+    public String getWord(int id, String title) {
+        String sql = "select word from " + title + " where id = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{id}, java.lang.String.class);
+    }
+
+    @Override
+    public String getPhonetic(int id, String title) {
+        String sql = "select phonetic from " + title + " where id = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{id}, java.lang.String.class);
+    }
 }

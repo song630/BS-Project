@@ -7,7 +7,7 @@ public interface UserDAO {
     // init database connection
     public void setDataSource(DataSource ds);
     // create a record
-    public void create(String username, String password, String email, String phone, String education);
+    public void create(String username, String password, String email, String phone, String education, int plan, String date);
     // list one record
     public User getUser(String username);
     public boolean isUsernameExist(String username);
@@ -25,4 +25,8 @@ public interface UserDAO {
     public int getStudied(String user);
     public void updateStudied(String user, int num);
     public void updateDate(String user, String date);
+    public String getLastDate(String user);
+    public void clearDays(String user);
+    public void leftShift(String user, int amount, int addToDay7);
+    public void updateDay7(String user, int amount);
 }

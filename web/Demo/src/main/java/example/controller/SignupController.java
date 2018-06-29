@@ -39,10 +39,11 @@ public class SignupController {
                 return resultMap;
             }
             // ===== 2018.6.28更改: 注册后更新最后一次登录的日期
+            // ===== 2018.6.29更新: 更新日期的操作合并到create中
             Calendar now = Calendar.getInstance();
             String date = now.get(Calendar.YEAR) + "-" + (now.get(Calendar.MONTH) + 1) + "-" + now.get(Calendar.DAY_OF_MONTH);
-            temp.updateDate(username, date);
-            temp.create(username, password, email, phone, education);
+            int plan = 20;
+            temp.create(username, password, email, phone, education, plan, date);
             resultMap.put("info", "success");
             return resultMap;
         } catch (Exception e) {

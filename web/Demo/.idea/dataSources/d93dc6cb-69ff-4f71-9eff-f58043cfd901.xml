@@ -1159,7 +1159,7 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="294" parent="280" name="yes">
+    <column id="294" parent="280" name="status">
       <Position>2</Position>
       <DataType>varchar(4)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
