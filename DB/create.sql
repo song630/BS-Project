@@ -29,16 +29,3 @@ insert into user values ('user04', '123456', 'ccc@sna.com', '18812341234', 'seni
 insert into user values ('user05', '654321', 'ddd@sina.com', '18812341234', 'senior', 'none', '0', '20', '', '0', '0', '0', '0', '0', '0', '0');
 insert into user values ('user06', '654321', 'eee@sina.com', '18812341234', 'senior', 'none', '0', '20', '', '0', '0', '0', '0', '0', '0', '0');
 insert into user values ('user07', '111111', 'fff@sina.com', '18812341234', 'senior', 'none', '0', '20', '', '0', '0', '0', '0', '0', '0', '0');
-
-drop table privatebooks;
-
-create table privatebooks (
-	username	varchar(20),
-	title		varchar(20),
-	origin		varchar(20),
-	id			numeric(4, 0),
-	word		varchar(20),
-	primary key (username, title, origin, id)
-);
-
-delete from privatebooks;

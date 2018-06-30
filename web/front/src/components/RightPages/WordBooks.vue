@@ -7,15 +7,15 @@
       <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
     </div>
     <!-- 加入几个按钮 开始学习 开始背单词 制定计划-有推荐计划 -->
-    <ChangeStudying v-if="item.title !== studying" @changeStudying="change(item.title)"></ChangeStudying>
+    <ChangeStudying v-if="item.title !== studying && item.title !== 'Private'" @changeStudying="change(item.title)"></ChangeStudying>
     <!-- 通过路由传递参数 -->
-    <el-button type="primary" style="float: left;" @click="$router.push({path: $router.options.routes[2].children[1].path, query: {num: item.num, title: item.title}})">
+    <el-button type="primary" style="float: left;" @click="viewWordBook(item)">
       浏览单词书
     </el-button>
-    <el-button type="primary" v-if="item.title === studying" style="float: left;">
+    <el-button type="primary" v-if="item.title === studying" :disabled="item.title === 'Private'" style="float: left;" @click="$router.push($router.options.routes[4].children[0].path)">
       开始背单词
     </el-button>
-    <el-button type="primary" v-if="item.title === studying" style="float: left;" @click="$router.push($router.options.routes[3].children[0].path)">
+    <el-button type="primary" v-if="item.title === studying" :disabled="item.title === 'Private'" style="float: left;" @click="$router.push($router.options.routes[3].children[0].path)">
       制定计划
     </el-button>
   </el-card>
@@ -30,6 +30,13 @@ export default {
   name: 'WordBooks',
   components: { ChangeStudying },
   methods: {
+    viewWordBook: function (info) {
+      if (info.title !== 'Private') { // 非自定义单词书
+        this.$router.push({path: this.$router.options.routes[2].children[1].path, query: {num: info.num, title: info.title}})
+      } else { // 自定义单词书
+        this.$router.push({path: this.$router.options.routes[2].children[2].path, query: {num: info.num, title: info.title}})
+      }
+    },
     change: function (bookTitle) { // 后端更改cookie
       $.ajax({
         type: 'GET',

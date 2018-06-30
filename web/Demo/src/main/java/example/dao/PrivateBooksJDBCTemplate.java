@@ -20,34 +20,28 @@ public class PrivateBooksJDBCTemplate implements PrivateBooksDAO {
     }
 
     @Override
-    public boolean create(String username, String title, String origin, int id, String word) {
+    public boolean create(String username, String origin, int id, String word) {
         try {
-            String sql = "select id from privatebooks where username = ? and title = ? and word = ?;";
-            jdbcTemp.queryForObject(sql, new Object[]{username, title, word}, java.lang.Integer.class);
+            String sql = "select id from privatebooks where username = ? and word = ?;";
+            jdbcTemp.queryForObject(sql, new Object[]{username, word}, java.lang.Integer.class);
             return false;
         } catch (EmptyResultDataAccessException e) {
-            String sql = "insert into privatebooks(username, title, origin, id, word) values(?, ?, ?, ?, ?);";
-            jdbcTemp.update(sql, username, title, origin, id, word);
+            String sql = "insert into privatebooks(username, origin, id, word) values(?, ?, ?, ?);";
+            jdbcTemp.update(sql, username, origin, id, word);
             return true;
         }
     }
 
     @Override
-    public void delete(String username, String title, String word) {
-        String sql = "delete from privatebooks where username = ? and title = ? and word = ?;";
-        jdbcTemp.update(sql, username, title, word);
+    public void delete(String username, String word) {
+        String sql = "delete from privatebooks where username = ? and word = ?;";
+        jdbcTemp.update(sql, username, word);
     }
 
     @Override
-    public List<PrivateBooks> getAllWords(String username, String title) {
-        String sql = "select * from privatebooks where username = ? and title = ?;";
-        return jdbcTemp.query(sql, new PrivateBooksMapper());
-    }
-
-    @Override
-    public List<String> getAllTitles(String username) { // ===== 待验证
-        String sql = "select title from privatebooks where username = ?;";
-        return jdbcTemp.query(sql, new TitleMapper());
+    public List<PrivateBooks> getAllWords(String username) {
+        String sql = "select * from privatebooks where username = ?;";
+        return jdbcTemp.query(sql, new Object[]{username}, new PrivateBooksMapper());
     }
 
     @Override
@@ -57,14 +51,18 @@ public class PrivateBooksJDBCTemplate implements PrivateBooksDAO {
     }
 
     @Override
-    public void deleteAllOfTitle(String username, String title) {
-        String sql = "delete from privatebooks where username = ? and title = ?;";
-        jdbcTemp.update(sql, username, title);
+    public PrivateBooks getEntry(String username, String word) {
+        String sql = "select * from privatebooks where username = ? and word = ?;";
+        try {
+            return jdbcTemp.queryForObject(sql, new Object[]{username, word}, new PrivateBooksMapper());
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
     @Override
-    public PrivateBooks getEntry(String username, String title, String word) {
-        String sql = "select * from privatebooks where username = ? and title = ? and word = ?;";
-        return jdbcTemp.queryForObject(sql, new Object[]{username, title, word}, new PrivateBooksMapper());
+    public int count(String username) { // === 待验证
+        String sql = "select count(username = ? or null) from privatebooks;";
+        return jdbcTemp.queryForObject(sql, new Object[]{username}, java.lang.Integer.class);
     }
 }

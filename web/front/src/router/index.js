@@ -13,6 +13,7 @@ import Progress from '@/components/RightPages/Progress'
 import TestStart from '@/components/RightPages/TestStart'
 import TestCard from '@/components/RightPages/TestCard'
 import TestResult from '@/components/RightPages/TestResult'
+import PrivateTable from '@/components/RightPages/PrivateTable'
 import { getCookie } from '../util.js'
 
 Vue.use(Router)
@@ -40,7 +41,8 @@ const routes = [
     component: Index,
     children: [
       { path: '/wordBooks', component: WordBooks, name: 'WordBooks', meta: { requireAuth: true } },
-      { path: '/wordInfo', component: WordInfo, name: 'WordInfo', meta: { requireAuth: true } }
+      { path: '/wordInfo', component: WordInfo, name: 'WordInfo', meta: { requireAuth: true } },
+      { path: '/privateTable', component: PrivateTable, name: 'PrivateTable', meta: { requireAuth: true } }
     ]
   },
   {

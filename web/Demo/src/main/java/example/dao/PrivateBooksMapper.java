@@ -8,7 +8,6 @@ public class PrivateBooksMapper implements RowMapper<PrivateBooks> {
     public PrivateBooks mapRow(ResultSet rs, int rowNum) throws SQLException {
         PrivateBooks pb = new PrivateBooks();
         pb.setUsername(rs.getString("username"));
-        pb.setTitle(rs.getString("title"));
         pb.setOrigin(rs.getString("origin"));
         pb.setId(rs.getInt("id"));
         pb.setWord(rs.getString("word"));

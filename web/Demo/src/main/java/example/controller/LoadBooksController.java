@@ -1,5 +1,6 @@
 package example.controller;
 import example.CookieController;
+import example.dao.PrivateBooksJDBCTemplate;
 import example.dao.UserJDBCTemplate;
 import example.dao.WordBookJDBCTemplate;
 import example.pojo.WordBook;
@@ -29,10 +30,18 @@ public class LoadBooksController { // ===== 重要 后期要加上自定义单�
             UserJDBCTemplate userTemp = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
             WordBookJDBCTemplate bookTemp = (WordBookJDBCTemplate) context.getBean("wordBookJDBCTemplate");
             String studying = userTemp.getStudying(user); // could be none
+            // 添加正在学习的单词书的cookie
             cc.addCookie("studying", studying, "/", "localhost");
             System.out.print("getWordBooks, ");
             cc.showCookies();
-            return bookTemp.listWordBooks();
+            // ===== 以下为2018.6.30添加
+            List<WordBook> list = bookTemp.listWordBooks();
+            WordBook w = new WordBook();
+            w.setTitle("Private");
+            PrivateBooksJDBCTemplate pTemp = (PrivateBooksJDBCTemplate) context.getBean("privateBooksJDBCTemplate");
+            w.setNum(pTemp.count(user));
+            list.add(w); // 把自定义单词书加进去
+            return list;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

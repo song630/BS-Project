@@ -29,6 +29,9 @@
         <el-button type="primary" @click="getNextOne" :disabled="!clicked || reachEnd">下一个
           <i class="el-icon-arrow-right el-icon--right"></i>
         </el-button>
+        <el-button type="success" @click="addPrivate">
+          加入自定义单词书
+        </el-button>
       </el-form-item>
       <el-form-item> <!-- 进度条 -->
         <el-progress :percentage="Math.round(submit.indexOfTotal / totalNum * 100)"></el-progress>
@@ -70,6 +73,36 @@ export default {
     }
   },
   methods: {
+    addPrivate: function () {
+      let submit = {
+        word: this.word,
+        studying: this.submit.studying,
+        username: getCookie('username'),
+        id: this.id // 单词书中的index
+      }
+      $.ajax({
+        ype: 'GET',
+        url: 'http://localhost:8080/Hello/add_private',
+        crossDomain: true,
+        xhrFields: {
+          withCredentials: true
+        },
+        dataType: 'json',
+        data: {obj: JSON.stringify(submit)},
+        success: (result) => { // Map<>类型
+          if (result.info === 'duplicate') {
+            alert('单词重复')
+          } else if (result.info === 'success') {
+            alert('添加成功')
+          } else {
+            alert('添加失败')
+          }
+        },
+        error: function () {
+          alert('添加失败')
+        }
+      })
+    },
     addToYes: function () {
       this.clicked = true
       this.list.yes.push({ username: this.submit.user, status: 'yes', word: this.word, id: this.id })
