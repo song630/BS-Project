@@ -49,7 +49,7 @@
         </el-main>
 
         <el-footer>
-          <div>Designed by Yizhi Song, using Vue.js and ElementUI</div>
+          <div>Designed by KovacsSoong, using Vue.js and ElementUI</div>
           <div>{{ this.date }}</div>
         </el-footer>
 
@@ -85,6 +85,8 @@ export default {
       delCookie('username', 1)
       setCookie('isLogin', 'false', 1)
       console.log('after logout, cookies: ', document.cookie)
+      // 登出后强制回到首页 === 2018.7.14更改
+      this.$router.push(this.$router.options.routes[0].children[0].path)
     }
   },
   mounted: function () {

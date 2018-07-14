@@ -25,8 +25,8 @@ public class ProgressController {
             int studied = userTemp.getStudied(user); // 当前单词书中已经学习的单词数
             WordBookJDBCTemplate bookTemp = (WordBookJDBCTemplate) context.getBean("wordBookJDBCTemplate");
             int total = bookTemp.getNum(studying); // 获取正在学习的单词书有多少单词
-            int percent = studied * 100 / total;
-            result.put("percent", percent + "");
+            result.put("studied", studied + "");
+            result.put("toStudy", total - studied + "");
             User u = userTemp.getUser(user);
             result.put("day1", u.getDay1() + "");
             result.put("day2", u.getDay2() + "");

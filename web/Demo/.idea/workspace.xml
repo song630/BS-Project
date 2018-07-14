@@ -48,29 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/LoginController.java">
+      <file leaf-file-name="ProgressController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="107" column="67" lean-forward="true" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
-              <folding>
-                <element signature="e#3423#3439#0" expanded="true" />
-                <element signature="e#4945#4961#0" expanded="true" />
-                <element signature="e#7577#7578#0" expanded="true" />
-                <element signature="e#7636#7637#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RSAUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/example/RSAUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="174" column="74" lean-forward="true" selection-start-line="174" selection-start-column="74" selection-end-line="174" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -132,7 +114,6 @@
         <option value="$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/ReviewTableController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/DailyJDBCTemplate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/StartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/WordEntryDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/WordEntryJDBCTemplate.java" />
@@ -148,6 +129,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/example/RSAUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java" />
       </list>
     </option>
   </component>
@@ -183,7 +165,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="96" />
     <option name="y" value="15" />
     <option name="width" value="1611" />
@@ -195,8 +177,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,6 +232,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,11 +510,13 @@
       <workItem from="1531490221709" duration="2273000" />
       <workItem from="1531537389254" duration="2954000" />
       <workItem from="1531548712744" duration="2725000" />
+      <workItem from="1531553753841" duration="106000" />
+      <workItem from="1531554991963" duration="413000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="190377000" />
+    <option name="totallyTimeSpent" value="190896000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -569,7 +553,7 @@
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979798" weight="0.4682836" />
       <window_info anchor="bottom" id="Spring" order="13" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32649255" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21555118" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2234252" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -821,13 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="36" column="49" lean-forward="true" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/ReviewTableController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
@@ -929,26 +906,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/RSAUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="174" column="74" lean-forward="true" selection-start-line="174" selection-start-column="74" selection-end-line="174" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="960">
+          <caret line="107" column="67" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/LoginController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/RSAUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="107" column="67" lean-forward="true" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
-          <folding>
-            <element signature="e#3423#3439#0" expanded="true" />
-            <element signature="e#4945#4961#0" expanded="true" />
-            <element signature="e#7577#7578#0" expanded="true" />
-            <element signature="e#7636#7637#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="232">
+          <caret line="174" column="74" selection-start-line="174" selection-start-column="74" selection-end-line="174" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="33" column="49" lean-forward="true" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
         </state>
       </provider>
     </entry>
