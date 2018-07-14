@@ -44,6 +44,7 @@
           <element id="library" level="project" name="Maven: com.thetransactioncompany:cors-filter:2.6" />
           <element id="library" level="project" name="Maven: com.thetransactioncompany:java-property-utils:1.9.1" />
           <element id="library" level="project" name="Maven: com.alibaba:fastjson:1.2.3" />
+          <element id="library" level="project" name="Maven: org.bouncycastle:bcprov-jdk15on:1.59" />
         </element>
       </element>
       <element id="directory" name="META-INF">

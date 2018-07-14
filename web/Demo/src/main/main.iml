@@ -30,5 +30,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk15on:1.59" level="project" />
   </component>
 </module>

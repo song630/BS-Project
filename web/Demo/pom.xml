@@ -141,6 +141,12 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.3</version>
     </dependency>
+    <!-- RSA加密 -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcprov-jdk15on</artifactId>
+      <version>1.59</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Demo</finalName>

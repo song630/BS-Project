@@ -25,6 +25,7 @@
 <script>
 import $ from 'jquery'
 import { getCookie } from '../../util.js'
+import '../../security.js'
 export default {
   name: 'LoginDialog',
   data () {
@@ -73,6 +74,41 @@ export default {
         this.dialogFormVisible = true
       }
     },
+    submit_again (encrypted) { // 加密后再次把密码发给后端
+      let toSubmit = {
+        username: this.form.username,
+        encrypted: encrypted
+      }
+      $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/Hello/login_check',
+        crossDomain: true,
+        xhrFields: {
+          withCredentials: true
+        },
+        dataType: 'json',
+        data: { obj: JSON.stringify(toSubmit) },
+        success: (result) => { // 后端添加了2个cookie
+          if (result.info === 'success') {
+            alert('登录成功')
+            this.dialogFormVisible = false
+            // 改变上层组件显示的username (默认guest)
+            console.log('LoginDialog, after login, cookies: ', document.cookie)
+            this.$emit('login_success', this.form.username)
+          } else if (result.info === 'wrong_pwd') {
+            alert('密码错误')
+            this.dialogFormVisible = true
+          } else if (result.info === 'not_found') {
+            alert('找不到用户')
+            this.dialogFormVisible = true
+          } else {
+            alert('登录失败')
+            this.dialogFormVisible = true
+          }
+        },
+        error: function () { alert('登录失败') }
+      })
+    },
     submit: function (formName) {
       let canSubmit = false
       this.$refs[formName].validate((valid) => {
@@ -83,6 +119,31 @@ export default {
           canSubmit = true
         }
       })
+      if (canSubmit) {
+        $.ajax({
+          type: 'GET',
+          url: 'http://localhost:8080/Hello/login_request',
+          crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
+          dataType: 'json',
+          data: {},
+          success: (result) => {
+            if (result.info === 'error') {
+              alert('登录失败')
+            } else {
+              window.RSAUtils.setMaxDigits(200)
+              let key = window.RSAUtils.getKeyPair(result.pub_exp, '', result.pub_mod)
+              // 用后端发来的公钥加密
+              let encrypted = window.RSAUtils.encryptedString(key, this.form.password)
+              this.submit_again(encrypted)
+            }
+          },
+          error: function () { alert('登录失败') }
+        })
+      }
+      /*
       if (canSubmit) {
         $.ajax({
           type: 'GET',
@@ -118,6 +179,7 @@ export default {
           }
         })
       }
+      */
     }
   }
 }
