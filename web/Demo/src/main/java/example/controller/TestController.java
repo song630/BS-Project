@@ -47,8 +47,9 @@ public class TestController {
             set.add(num); // 将不同的数存入HashSet
         }
         int setSize = set.size();
+        System.out.println("set size: " + setSize + ", n: " + n);
         // 如果存入的数小于指定生成的个数 调用递归再生成剩余个数的随机数
-        if (setSize < n)
-            randomSet(min, max, n - setSize, set);
+        if (setSize < 30)
+            randomSet(min, max, 30 - setSize, set);
     }
 }

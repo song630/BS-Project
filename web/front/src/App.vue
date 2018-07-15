@@ -30,10 +30,10 @@ export default {
         },
         data: {},
         success: (result) => {
-          this.serverData = JSON.stringify(result)
+          this.serverData = JSON.stringify(result);
         },
         error: function () {
-          alert('error')
+          alert('error');
         }
       })
     }

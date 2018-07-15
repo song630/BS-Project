@@ -40,18 +40,19 @@ export default {
       data: {},
       success: (result) => {
         if (result.info === 'no_book') {
-          alert('未选择学习的单词书')
+          alert('未选择学习的单词书');
+          this.$router.push(this.$router.options.routes[0].children[0].path); // 强制回到首页
         } else if (result.info === 'success') {
-          this.title = result.studying // 正在学习的单词书
-          setCookie('studying', this.title, 1)
-          this.num = parseInt(result.num)
-          this.plan = parseInt(result.plan)
-          this.msg = '书名：' + this.title + '  单词数：' + this.num
+          this.title = result.studying; // 正在学习的单词书
+          setCookie('studying', this.title, 1);
+          this.num = parseInt(result.num);
+          this.plan = parseInt(result.plan);
+          this.msg = '书名：' + this.title + '  单词数：' + this.num;
         } else {
-          alert('失败')
+          alert('失败');
         }
       },
-      error: function () { alert('失败') }
+      error: function () { alert('失败'); }
     })
   }
 }

@@ -39,21 +39,23 @@ export default {
       data: {},
       success: (result) => {
         if (result.info === 'no_book') {
-          alert('未选择学习的单词书')
+          alert('未选择学习的单词书');
+          this.$router.push(this.$router.options.routes[0].children[0].path); // 强制回到首页
         } else if (result.info === 'success') {
-          this.title = result.studying // 正在学习的单词书
-          setCookie('studying', this.title, 1)
-          this.num = parseInt(result.num)
-          this.canTest = parseInt(result.studied) >= 30 // 已经学习的单词数大于30才能测试
-          this.msg = '书名：' + this.title + '  单词数：' + this.num
+          this.title = result.studying; // 正在学习的单词书
+          setCookie('studying', this.title, 1);
+          this.num = parseInt(result.num);
+          this.canTest = parseInt(result.studied) >= 30; // 已经学习的单词数大于30才能测试
+          this.msg = '书名：' + this.title + '  单词数：' + this.num;
           if (!this.canTest) {
-            alert('已学习的单词数过少，暂时不能测试')
+            alert('已学习的单词数过少，暂时不能测试');
+            this.$router.push(this.$router.options.routes[0].children[0].path); // 强制回到首页
           }
         } else {
-          alert('失败')
+          alert('失败');
         }
       },
-      error: function () { alert('失败') }
+      error: function () { alert('失败'); }
     })
   }
 }

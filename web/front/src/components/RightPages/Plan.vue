@@ -36,14 +36,12 @@ export default {
         data: {},
         success: (result) => { // 返回类型为Map<>
           if (result.info === 'success') {
-            alert('制定计划成功')
+            alert('制定计划成功');
           } else {
-            alert('制定计划失败')
+            alert('制定计划失败');
           }
         },
-        error: function () {
-          alert('制定计划失败')
-        }
+        error: function () { alert('制定计划失败'); }
       })
     }
   },
@@ -59,16 +57,15 @@ export default {
       data: {},
       success: (result) => {
         if (result === null) {
-          alert('获取单词书信息失败或未选择单词书')
+          alert('获取单词书信息失败或未选择单词书');
+          this.$router.push(this.$router.options.routes[0].children[0].path); // 强制回到首页
         } else {
-          this.studying = result.title
-          this.num = result.num
-          this.msg = '书名：' + this.studying + '  单词数：' + this.num
+          this.studying = result.title;
+          this.num = result.num;
+          this.msg = '书名：' + this.studying + '  单词数：' + this.num;
         }
       },
-      error: function () {
-        alert('获取单词书信息失败')
-      }
+      error: function () { alert('获取单词书信息失败'); }
     })
   }
 }

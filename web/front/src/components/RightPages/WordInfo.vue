@@ -52,22 +52,22 @@ export default {
     }
   },
   mounted: function () {
-    this.bookInfo.title = this.$route.query.title
-    this.bookInfo.num = this.$route.query.num // 获取通过路由传递的参数
-    this.msg = '书名：' + this.bookInfo.title + '  单词数：' + this.bookInfo.num
-    this.getWordInfo()
+    this.bookInfo.title = this.$route.query.title;
+    this.bookInfo.num = this.$route.query.num; // 获取通过路由传递的参数
+    this.msg = '书名：' + this.bookInfo.title + '  单词数：' + this.bookInfo.num;
+    this.getWordInfo();
   },
   methods: {
     getLastOne: function () {
-      this.bookInfo.id--
-      this.getWordInfo()
+      this.bookInfo.id--;
+      this.getWordInfo();
     },
     getNextOne: function () {
-      this.bookInfo.id++
-      this.getWordInfo()
+      this.bookInfo.id++;
+      this.getWordInfo();
     },
     getWordInfo: function () {
-      console.log('getWordInfo, toSubmit:', this.bookInfo)
+      console.log('getWordInfo, toSubmit:', this.bookInfo);
       $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/Hello/get_wordInfo',
@@ -79,33 +79,39 @@ export default {
         data: {obj: JSON.stringify(this.bookInfo)},
         success: (result) => {
           if (result === null) {
-            alert('获取单词信息失败')
+            alert('获取单词信息失败');
           } else {
-            this.word = result.word
-            this.phonetic = result.phonetic
-            this.pron = result.pron
+            this.word = result.word;
+            this.phonetic = result.phonetic;
+            this.pron = result.pron;
             // 分离例句
-            let arr = result.sentences.split('**++')
-            arr[0] = arr[0].replace('++', '')
-            arr[arr.length - 1] = arr[arr.length - 1].replace('**', '')
-            this.sentences = Array(0).concat(arr)
+            let arr = result.sentences.split('**++');
+            arr[0] = arr[0].replace('++', '');
+            arr[arr.length - 1] = arr[arr.length - 1].replace('**', '');
+            this.sentences = Array(0).concat(arr);
             // 分离词性和释义
-            this.poses = []
-            let arr1 = result.poses.split('**{') // 一个词性和若干释义为一个数组中的元素
+            this.poses = [];
+            let arr1 = result.poses.split('**{'); // 一个词性和若干释义为一个数组中的元素
             for (let i = 0; i < arr1.length; i++) {
-              let pair = arr1[i].split('}++')
+              let pair = arr1[i].split('}++');
               if (i === 0) {
-                pair[0] = pair[0].replace('{', '')
+                pair[0] = pair[0].replace('{', '');
               }
-              let exps = pair[1].split('**++') // 一个词性对应的若干释义
-              exps[0] = exps[0].replace('++', '')
-              exps[exps.length - 1] = exps[exps.length - 1].replace('**', '')
-              let temp = { pos: pair[0], exps: exps }
-              this.poses.push(temp)
+              if (pair.length === 1) { // === 如advantageous的poses只有词性{adj.}没有对应的释义
+                pair[0] = pair[0].replace('}', '');
+                let temp = {pos: pair[0], exps: ['']};
+                this.poses.push(temp);
+              } else {
+                let exps = pair[1].split('**++'); // 一个词性对应的若干释义
+                exps[0] = exps[0].replace('++', '');
+                exps[exps.length - 1] = exps[exps.length - 1].replace('**', '');
+                let temp = { pos: pair[0], exps: exps };
+                this.poses.push(temp);
+              }
             }
           }
         },
-        error: function () { alert('获取单词信息失败') }
+        error: function () { alert('获取单词信息失败'); }
       })
     }
   }

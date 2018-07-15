@@ -10,6 +10,9 @@
   <!-- FIXME change it to the project's website -->
 
   <properties>
+    <!-- === 2018.7.15修改 === 之前会提示Java 1.5版本已过期 现在升到1.8 -->
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- jackson: deal with json -->
     <jackson.version>2.9.5</jackson.version>

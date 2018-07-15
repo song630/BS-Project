@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -39,8 +40,7 @@ public class MemorizeController {
             int plan = userTemp.getPlan(user);
             int studied = userTemp.getStudied(user);
             int totalNum = (studied + plan > num) ? (num - studied) : plan; // 实际在这个list中要遍历显示的单词数量
-            if (indexOfTotal == totalNum) {  // 已经完成了这个list的学习
-                userTemp.updateStudied(user, totalNum); // 记录学习进度
+            if (indexOfTotal == totalNum + 1) {  // 已经完成了这个list
                 result.put("info", "end");
                 return result;
             }
@@ -75,6 +75,8 @@ public class MemorizeController {
         System.out.println("submitList, obj: " + obj);
         try {
             JSONObject json = JSON.parseObject(obj);
+            int indexOfTotal = json.getIntValue("indexOfTotal"); // ===
+            int totalNum = json.getIntValue("totalNum"); // ===
             JSONArray yes = json.getJSONArray("yes"), no = json.getJSONArray("no");
             List<Daily> yesList = new ArrayList<Daily>(), noList = new ArrayList<Daily>();
             drawList(yes, yesList);
@@ -86,6 +88,9 @@ public class MemorizeController {
 
             ApplicationContext context = new ClassPathXmlApplicationContext("file:D://courses/3.2/BS/BS-Project/web/Demo/src/main/webapp/WEB-INF/applicationContext.xml");
             UserJDBCTemplate userTemp = (UserJDBCTemplate) context.getBean("userJDBCTemplate");
+
+            userTemp.updateStudied(user, totalNum); // === 2018.7.15修改 === 记录学习进度
+
             String lastTime = userTemp.getLastDate(user); // 获取最后登录日期
             if (!date.equals(lastTime)) { // 最后一次登录的日期不是当前日期
                 DailyJDBCTemplate dailyTemp = (DailyJDBCTemplate) context.getBean("dailyJDBCTemplate");
@@ -101,6 +106,45 @@ public class MemorizeController {
             String[] date2 = date.split("-");
             int day1 = Integer.parseInt(date1[2]);
             int day2 = Integer.parseInt(date2[2]);
+
+            // ===== 以下修改于2018.7.15 =====
+            if (!date1[0].equals(date2[0])) // 年份不同
+                userTemp.clearDays(user); // 直接清空day1-day7
+            else if (!date1[1].equals(date2[1])) { // 月份不同
+                String fromYear = date1[0], toYear = date2[0];
+                String fromMonth = date1[1], toMonth = date2[1];
+                if (fromMonth.length() == 1)
+                    fromMonth = "0" + fromMonth;
+                if (toMonth.length() == 1)
+                    toMonth = "0" + toMonth;
+                String fromDay = date1[2], toDay = date2[2];
+                if (fromDay.length() == 1)
+                    fromDay = "0" + fromDay;
+                if (toDay.length() == 1)
+                    toDay = "0" + toDay;
+                // 计算天数差
+                SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                String fromDate = simpleFormat.format(fromYear + "-" + fromMonth + "-" + fromDay + " 12:00");
+                String toDate = simpleFormat.format(toYear + "-" + toMonth + "-" + toDay + " 12:00");
+                long from = simpleFormat.parse(fromDate).getTime();
+                long to = simpleFormat.parse(toDate).getTime();
+                int diff_days = (int) ((to - from)/(1000 * 60 * 60 * 24));
+                if (diff_days >= 7)
+                    userTemp.clearDays(user); // 直接清空day1-day7
+                else
+                    userTemp.leftShift(user, diff_days, total); // 整体向左平移 同时更新day7
+            } else if (day2 - day1 >= 7) // 月份相同但日期差大于7天
+                userTemp.clearDays(user); // 直接清空day1-day7
+            else if (day1 != day2) {
+                // 整体向左平移 同时更新day7
+                userTemp.leftShift(user, day2 - day1, total);
+            } else { // day1 == day2
+                // 更新day7
+                userTemp.updateDay7(user, total);
+                System.out.println("submitList, day7 updated.");
+            }
+
+            /*
             if (!date1[0].equals(date2[0]) || !date1[1].equals(date2[1]) || day2 - day1 >= 7) {
                 // 直接清空day1-day7
                 userTemp.clearDays(user);
@@ -112,6 +156,7 @@ public class MemorizeController {
                 userTemp.updateDay7(user, total);
                 System.out.println("submitList, day7 updated.");
             }
+            */
             userTemp.updateDate(user, date); // 更新最后登录的日期
             // 更新用户的day1-day7:
             resultMap.put("info", "success");

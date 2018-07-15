@@ -28,11 +28,11 @@ export default {
   name: 'PrivateTable',
   methods: {
     deletePrivate: function (theWord, index) {
-      this.tableData.splice(index, 1) // 删除数组中的元素
+      this.tableData.splice(index, 1); // 删除数组中的元素
       let submit = {
         word: theWord,
         username: getCookie('username')
-      }
+      };
       $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/Hello/delete_private/',
@@ -44,14 +44,12 @@ export default {
         data: {obj: JSON.stringify(submit)},
         success: (result) => { // 收到的是Map<>
           if (result.info === 'success') {
-            alert('删除成功')
+            alert('删除成功');
           } else {
-            alert('删除单词失败')
+            alert('删除单词失败');
           }
         },
-        error: function () {
-          alert('删除单词失败')
-        }
+        error: function () { alert('删除单词失败'); }
       })
     }
   },
@@ -72,19 +70,17 @@ export default {
       data: {},
       success: (result) => { // 收到的是List<>
         if (result === null) {
-          alert('获取单词失败')
+          alert('获取单词失败');
         } else {
           for (let i = 0; i < result.length; i++) {
-            let p = result[i].poses
-            p = p.replace(/\+\+/g, '')
-            p = p.replace(/\*\*/g, '')
-            this.tableData.push({ word: result[i].word, poses: p })
+            let p = result[i].poses;
+            p = p.replace(/\+\+/g, '');
+            p = p.replace(/\*\*/g, '');
+            this.tableData.push({ word: result[i].word, poses: p });
           }
         }
       },
-      error: function () {
-        alert('获取单词失败')
-      }
+      error: function () { alert('获取单词失败'); }
     })
   }
 }

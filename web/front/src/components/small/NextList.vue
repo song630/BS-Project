@@ -20,8 +20,8 @@ export default {
   },
   methods: {
     nextClicked: function () {
-      this.dialogVisible = false
-      this.$emit('nextList')
+      this.dialogVisible = false;
+      this.$emit('nextList');
     }
   }
 }

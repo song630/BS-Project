@@ -16,7 +16,7 @@ import TestResult from '@/components/RightPages/TestResult'
 import PrivateTable from '@/components/RightPages/PrivateTable'
 import { getCookie } from '../util.js'
 
-Vue.use(Router)
+Vue.use(Router);
 
 const routes = [
   {
@@ -89,23 +89,23 @@ const routes = [
       { path: '/testResult', component: TestResult, name: 'TestResult', meta: { requireAuth: true } }
     ]
   }
-]
+];
 
 const router = new Router({
   routes
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requireAuth) {
-    let status = getCookie('isLogin')
+    let status = getCookie('isLogin');
     if (status === 'true') {
-      next()
+      next();
     } else {
-      console.log('must login')
-      next({path: '/'})
+      console.log('must login');
+      next({path: '/'});
     }
   } else {
-    next()
+    next();
   }
-})
+});
 export default router

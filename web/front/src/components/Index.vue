@@ -76,30 +76,30 @@ export default {
   },
   methods: {
     change_login_name (param) { // 把guest改为子组件传过来的用户名
-      this.username = param
-      this.isLogin = true
+      this.username = param;
+      this.isLogin = true;
     },
     on_logout () { // 用户已经登出
-      this.username = 'guest'
-      this.isLogin = false
-      delCookie('username', 1)
-      setCookie('isLogin', 'false', 1)
-      console.log('after logout, cookies: ', document.cookie)
+      this.username = 'guest';
+      this.isLogin = false;
+      delCookie('username', 1);
+      setCookie('isLogin', 'false', 1);
+      console.log('after logout, cookies: ', document.cookie);
       // 登出后强制回到首页 === 2018.7.14更改
-      this.$router.push(this.$router.options.routes[0].children[0].path)
+      this.$router.push(this.$router.options.routes[0].children[0].path);
     }
   },
   mounted: function () {
-    let nowDate = new Date()
-    let year = nowDate.getFullYear()
-    let month = nowDate.getMonth() + 1
-    let day = nowDate.getDate()
-    this.date = (year + '-') + (month + '-') + day
+    let nowDate = new Date();
+    let year = nowDate.getFullYear();
+    let month = nowDate.getMonth() + 1;
+    let day = nowDate.getDate();
+    this.date = (year + '-') + (month + '-') + day;
     // setCookie('isLogin', 'false', 1)
     if (getCookie('username') === null || getCookie('username') === 'null') {
-      this.isLogin = false
+      this.isLogin = false;
     }
-    console.log('Index mounted, cookies: ', document.cookie)
+    console.log('Index mounted, cookies: ', document.cookie);
   }
 }
 </script>

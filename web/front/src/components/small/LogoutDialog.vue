@@ -22,17 +22,17 @@ export default {
   },
   methods: {
     buttonClicked () {
-      let status = getCookie('isLogin')
-      console.log('status: ', status)
+      let status = getCookie('isLogin');
+      console.log('status: ', status);
       if (status === 'false' || status === null || status === 'null') {
-        alert('用户未登录')
+        alert('用户未登录');
       } else {
-        this.dialogVisible = true
+        this.dialogVisible = true;
       }
     },
     log_out () {
-      this.$emit('logout_success')
-      this.dialogVisible = false
+      this.$emit('logout_success');
+      this.dialogVisible = false;
     }
   }
 }

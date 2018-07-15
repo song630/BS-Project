@@ -82,16 +82,14 @@ export default {
         // {title: "CET6WordBook", num: 2083}
         // {title: "GREWordBook", num: 3063}
         // {title: "TOEFLWordBook", num: 1300}
-        console.log('WordBooks mounted, result:', result)
-        console.log('WordBooks, cookies:', document.cookie)
-        this.numBooks = result.length
-        this.booksInfo = Array(0).concat(result) // 数组拼接
+        console.log('WordBooks mounted, result:', result);
+        console.log('WordBooks, cookies:', document.cookie);
+        this.numBooks = result.length;
+        this.booksInfo = Array(0).concat(result); // 数组拼接
         // ===== 注意 后期加上 登出后要删除相应的cookie =====
-        this.studying = getCookie('studying') // 后端设置了cookie
+        this.studying = getCookie('studying'); // 后端设置了cookie
       },
-      error: function () {
-        alert('单词书加载失败')
-      }
+      error: function () { alert('单词书加载失败'); }
     })
   }
 }

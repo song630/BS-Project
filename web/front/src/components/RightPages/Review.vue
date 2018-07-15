@@ -52,16 +52,14 @@ export default {
           alert('获取daily单词失败')
         } else {
           for (let i = 0; i < result.length; i++) {
-            let p = result[i].poses
-            p = p.replace(/\+\+/g, '')
-            p = p.replace(/\*\*/g, '')
-            this.tableData.push({ word: result[i].word, poses: p, status: result[i].status })
+            let p = result[i].poses;
+            p = p.replace(/\+\+/g, '');
+            p = p.replace(/\*\*/g, '');
+            this.tableData.push({ word: result[i].word, poses: p, status: result[i].status });
           }
         }
       },
-      error: function () {
-        alert('获取daily单词失败')
-      }
+      error: function () { alert('获取daily单词失败'); }
     })
   }
 }

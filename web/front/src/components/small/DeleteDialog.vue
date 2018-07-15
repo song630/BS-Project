@@ -33,19 +33,17 @@ export default {
         dataType: 'json',
         data: {},
         success: (result) => {
-          console.log('deleteUser, result:', result)
+          console.log('deleteUser, result:', result);
           if (result.info === 'success') {
-            alert('注销成功')
-            this.$emit('delete_success')
+            alert('注销成功');
+            this.$emit('delete_success');
           } else {
-            alert('注销失败')
+            alert('注销失败');
           }
         },
-        error: function () {
-          alert('注销失败')
-        }
-      })
-      this.dialogVisible = false
+        error: function () { alert('注销失败'); }
+      });
+      this.dialogVisible = false;
     }
   }
 }

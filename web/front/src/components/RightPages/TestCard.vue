@@ -46,22 +46,23 @@ export default {
   },
   methods: {
     clickYes: function () {
-      this.get++
-      this.clicked = true
+      this.get++;
+      this.clicked = true;
     },
     clickNo: function () {
-      this.clicked = true
+      this.clicked = true;
     },
     getNextOne: function () {
       if (this.indexOfTotal === this.total - 1) { // 完成测试
-        this.$router.push({path: this.$router.options.routes[7].children[2].path, query: {num: this.get}})
-        console.log('test done.')
+        this.$router.push({path: this.$router.options.routes[7].children[2].path, query: {num: this.get}});
+        console.log('test done.');
       } else {
-        this.indexOfTotal++
-        this.word = this.words[this.indexOfTotal]
-        this.phonetic = this.phonetics[this.indexOfTotal]
-        this.clicked = false
+        this.indexOfTotal++;
+        this.word = this.words[this.indexOfTotal];
+        this.phonetic = this.phonetics[this.indexOfTotal];
+        this.clicked = false;
       }
+      console.log('getNextOne, indexOfTotal:', this.indexOfTotal)
     }
   },
   mounted: function () {
@@ -79,17 +80,15 @@ export default {
           alert('获取测试数据失败')
         } else {
           for (let i = 0; i < result.length; i += 2) {
-            this.words.push(result[i])
-            this.phonetics.push(result[i + 1])
+            this.words.push(result[i]);
+            this.phonetics.push(result[i + 1]);
           }
         }
-        this.word = this.words[0]
-        this.phonetic = this.phonetics[0]
-        console.log('TestCard, words:', this.words)
+        this.word = this.words[0];
+        this.phonetic = this.phonetics[0];
+        console.log('TestCard, words:', this.words);
       },
-      error: function () {
-        alert('获取测试数据失败')
-      }
+      error: function () { alert('获取测试数据失败'); }
     })
   }
 }

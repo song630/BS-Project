@@ -41,59 +41,59 @@ export default {
     let emailCheck = (rule, value, callback) => {
       // 验证邮箱地址是否合法的另一种正则表达式
       // var reg=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-      let emailRE = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/
+      let emailRE = /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
       if (emailRE.test(value)) {
-        callback()
+        callback();
       } else {
-        callback(new Error('邮箱格式错误'))
+        callback(new Error('邮箱格式错误'));
       }
-    }
+    };
     let passwordCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入密码'))
+        callback(new Error('请输入密码'));
       }
       // 也可以6-20个数字 字母 下划线 /^(\w){6,20}$/
-      let pwdRE = /^(\w){6,20}$/
+      let pwdRE = /^(\w){6,20}$/;
       if (pwdRE.test(value)) {
-        callback()
+        callback();
       } else {
-        callback(new Error('密码格式错误：6-20位，可以包含数字、字母、下划线'))
+        callback(new Error('密码格式错误：6-20位，可以包含数字、字母、下划线'));
       }
-    }
+    };
     let reenterCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请再次输入密码'))
+        callback(new Error('请再次输入密码'));
       } else if (value !== this.form.password) {
-        callback(new Error('两次输入密码不一致'))
+        callback(new Error('两次输入密码不一致'));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     let usernameCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入用户名'))
+        callback(new Error('请输入用户名'));
       } else {
-        let usernameRE = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){4,19}$/
+        let usernameRE = /^[a-zA-Z]{1}([a-zA-Z0-9]|[_]){4,19}$/;
         if (usernameRE.test(value)) {
-          callback()
+          callback();
         } else {
-          callback(new Error('用户名格式错误：5-20个以字母开头，可包含数字和下划线的字符'))
+          callback(new Error('用户名格式错误：5-20个以字母开头，可包含数字和下划线的字符'));
         }
       }
-    }
+    };
     let phoneCheck = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入手机号码'))
+        callback(new Error('请输入手机号码'));
       } else {
-        let phoneRE = /^[1][34578][0-9]{9}$/
+        let phoneRE = /^[1][34578][0-9]{9}$/;
         // 开头是1 第二位是34578 以0-9的9个数字结尾
         if (phoneRE.test(value)) {
-          callback()
+          callback();
         } else {
-          callback(new Error('手机号码格式错误'))
+          callback(new Error('手机号码格式错误'));
         }
       }
-    }
+    };
     return {
       dialogFormVisible: false,
       formLabelWidth: '120px',
@@ -123,18 +123,18 @@ export default {
   },
   methods: {
     submit: function (formName) {
-      let canSubmit = false
+      let canSubmit = false;
       this.$refs[formName].validate((valid) => {
         if (!valid) {
-          alert('输入有误')
-          canSubmit = false
+          alert('输入有误');
+          canSubmit = false;
         } else {
-          canSubmit = true
+          canSubmit = true;
         }
-      })
+      });
       if (canSubmit) {
-        let toSubmit = this.form.username
-        console.log('toSubmit:', toSubmit)
+        let toSubmit = this.form.username;
+        console.log('toSubmit:', toSubmit);
         $.ajax({
           type: 'GET',
           // ethernet: 222.205.124.205
@@ -146,23 +146,23 @@ export default {
           dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
           success: (result) => {
-            console.log('result:', result)
+            console.log('result:', result);
             if (result.info === 'success') {
-              alert('注册成功')
-              this.dialogFormVisible = false
+              alert('注册成功');
+              this.dialogFormVisible = false;
             } else if (result.info === 'user_existed') {
-              alert('用户名已经存在')
-              this.dialogFormVisible = true
+              alert('用户名已经存在');
+              this.dialogFormVisible = true;
             } else if (result.info === 'email_existed') {
-              alert('邮箱已被注册')
+              alert('邮箱已被注册');
             } else {
-              alert('注册失败')
-              this.dialogFormVisible = true
+              alert('注册失败');
+              this.dialogFormVisible = true;
             }
           },
           error: function () {
-            alert('注册失败')
-            this.dialogFormVisible = true
+            alert('注册失败');
+            this.dialogFormVisible = true;
           }
         })
       }

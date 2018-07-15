@@ -48,20 +48,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EmailController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/EmailController.java">
+      <file leaf-file-name="MemorizeController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="135">
+              <caret line="84" column="20" lean-forward="true" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+              <folding>
+                <element signature="e#1111#1127#0" expanded="true" />
+                <element signature="e#3430#3446#0" expanded="true" />
+                <element signature="e#3943#3950#0" expanded="true" />
+                <element signature="e#3976#3983#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,13 +113,11 @@
         <option value="$PROJECT_DIR$/src/main/java/example/dao/DailyDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/pojo/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/ReviewTableController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/DailyJDBCTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/StartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/WordEntryDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/WordEntryJDBCTemplate.java" />
-        <option value="$PROJECT_DIR$/src/main/java/example/controller/TestController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/pojo/PrivateBooks.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/PrivateBooksMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/PrivateBooksDAO.java" />
@@ -135,13 +130,15 @@
         <option value="$PROJECT_DIR$/src/main/java/example/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/ProgressController.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/pojo/MailModel.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/example/service/EmailService.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/service/RealEmailService.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/UserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/dao/UserJDBCTemplate.java" />
         <option value="$PROJECT_DIR$/src/main/java/example/controller/EmailController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/example/controller/TestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java" />
       </list>
     </option>
   </component>
@@ -177,8 +174,8 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="58" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="57" />
     <option name="y" value="9" />
     <option name="width" value="1611" />
     <option name="height" value="1008" />
@@ -188,6 +185,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,15 +237,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -267,9 +258,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -552,12 +540,16 @@
       <workItem from="1531573281269" duration="3384000" />
       <workItem from="1531579738247" duration="820000" />
       <workItem from="1531619448344" duration="392000" />
-      <workItem from="1531620173402" duration="596000" />
+      <workItem from="1531620173402" duration="2167000" />
+      <workItem from="1531624478655" duration="1920000" />
+      <workItem from="1531636127972" duration="3330000" />
+      <workItem from="1531642413412" duration="410000" />
+      <workItem from="1531642909193" duration="471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200163000" />
+    <option name="totallyTimeSpent" value="207865000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -569,7 +561,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="6" width="1074" height="672" extended-state="0" />
+    <frame x="38" y="6" width="1074" height="672" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="PlantUML" order="3" weight="0.34547246" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -584,16 +577,15 @@
       <window_info id="UI Designer" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3283582" />
-      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49949443" weight="0.32649255" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="12" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4979798" weight="0.41417912" />
       <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4979798" visible="true" weight="0.34701493" />
       <window_info anchor="bottom" id="Spring" order="13" weight="0.3283582" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32649255" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24704725" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22047244" />
       <window_info id="Web" order="3" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -601,6 +593,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Database Console" order="14" weight="0.37686568" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="9" sideWeight="0.49949443" weight="0.32649255" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3283582" />
@@ -619,7 +612,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="10" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -759,13 +752,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="114" column="57" lean-forward="true" selection-start-line="114" selection-start-column="57" selection-end-line="114" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/PrivateTableController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="372">
@@ -822,13 +808,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="34" column="24" lean-forward="true" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/example/dao/DailyDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -864,13 +843,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
           <caret line="107" column="67" selection-start-line="107" selection-start-column="67" selection-end-line="107" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/RSAUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="174" column="74" selection-start-line="174" selection-start-column="74" selection-end-line="174" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -953,13 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/example/service/EmailService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1009,23 +974,54 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="59">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/EmailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
+        <state relative-caret-position="285">
           <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="59" lean-forward="true" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/EmailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="35" column="47" lean-forward="true" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/RSAUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="174" column="74" selection-start-line="174" selection-start-column="74" selection-end-line="174" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="52" column="51" lean-forward="true" selection-start-line="52" selection-start-column="51" selection-end-line="52" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/example/controller/MemorizeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="84" column="20" lean-forward="true" selection-start-line="84" selection-start-column="20" selection-end-line="84" selection-end-column="20" />
+          <folding>
+            <element signature="e#1111#1127#0" expanded="true" />
+            <element signature="e#3430#3446#0" expanded="true" />
+            <element signature="e#3943#3950#0" expanded="true" />
+            <element signature="e#3976#3983#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1088,6 +1084,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     drawPie (id) {
-      this.pieChart = echarts.init(document.getElementById(id)) // 初始化
+      this.pieChart = echarts.init(document.getElementById(id)); // 初始化
       this.pieChart.setOption({
         tooltip: {
           trigger: 'item',
@@ -78,7 +78,7 @@ export default {
       })
     },
     drawBar (id) {
-      this.barChart = echarts.init(document.getElementById(id)) // 初始化
+      this.barChart = echarts.init(document.getElementById(id)); // 初始化
       this.barChart.setOption({
         color: ['#3398DB'],
         tooltip: {
@@ -120,38 +120,38 @@ export default {
       data: {},
       success: (result) => { // Map<> 格式
         if (result.info === 'success') {
-          this.$set(this.data, 0, { name: 'day1', value: parseInt(result.day1) })
-          this.$set(this.data, 1, { name: 'day2', value: parseInt(result.day2) })
-          this.$set(this.data, 2, { name: 'day3', value: parseInt(result.day3) })
-          this.$set(this.data, 3, { name: 'day4', value: parseInt(result.day4) })
-          this.$set(this.data, 4, { name: 'day5', value: parseInt(result.day5) })
-          this.$set(this.data, 5, { name: 'day6', value: parseInt(result.day6) })
-          this.$set(this.data, 6, { name: 'day7', value: parseInt(result.day7) })
-          console.log('data:', this.data[6])
-          this.opinionData[0].value = parseInt(result.studied)
-          this.opinionData[1].value = parseInt(result.toStudy)
+          this.$set(this.data, 0, { name: 'day1', value: parseInt(result.day1) });
+          this.$set(this.data, 1, { name: 'day2', value: parseInt(result.day2) });
+          this.$set(this.data, 2, { name: 'day3', value: parseInt(result.day3) });
+          this.$set(this.data, 3, { name: 'day4', value: parseInt(result.day4) });
+          this.$set(this.data, 4, { name: 'day5', value: parseInt(result.day5) });
+          this.$set(this.data, 5, { name: 'day6', value: parseInt(result.day6) });
+          this.$set(this.data, 6, { name: 'day7', value: parseInt(result.day7) });
+          console.log('data:', this.data[6]);
+          this.opinionData[0].value = parseInt(result.studied);
+          this.opinionData[1].value = parseInt(result.toStudy);
 
           this.$nextTick(function () { // 获取数据后画图
-            this.drawPie('main1')
-            this.drawBar('main2')
+            this.drawPie('main1');
+            this.drawBar('main2');
           })
         } else {
-          alert('获取进度信息失败')
+          alert('获取进度信息失败');
         }
       },
       error: function () {
-        alert('获取进度信息失败')
+        alert('获取进度信息失败');
       }
     })
   },
   beforeDestroy: function () {
     if (this.pieChart) {
-      this.pieChart.dispose()
-      this.pieChart = null
+      this.pieChart.dispose();
+      this.pieChart = null;
     }
     if (this.barChart) {
-      this.barChart.dispose()
-      this.barChart = null
+      this.barChart.dispose();
+      this.barChart = null;
     }
   }
 }

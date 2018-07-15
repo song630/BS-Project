@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     changeClicked: function () {
-      this.dialogVisible = false
-      this.$emit('changeStudying')
+      this.dialogVisible = false;
+      this.$emit('changeStudying');
     }
   }
 }
