@@ -85,6 +85,12 @@ public class UserJDBCTemplate implements UserDAO {
     }
 
     @Override
+    public String getEmail(String username) {
+        String sql = "select email from user where username = ?;";
+        return jdbcTemp.queryForObject(sql, new Object[]{username}, java.lang.String.class);
+    }
+
+    @Override
     public void setStudying(String username, String newTitle) {
         // ===== 不确定是否加单引号
         String sql = "update user set studying = ?, studied = '0', plan = '20' where username = ?;";

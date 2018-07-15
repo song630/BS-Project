@@ -20,6 +20,30 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <!-- 发送邮件 -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <!-- SMTP: 简单邮件传输协议 -->
+        <property name="host" value="smtp.sina.com"/><!-- 主机 -->
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.timeout">25000</prop>
+            </props>
+        </property>
+        <property name="username" value="springtest123456"/><!-- 发件人用户名 -->
+        <property name="password" value="123456abc"/><!-- 发件人密码 -->
+        <property name="defaultEncoding" value="UTF-8"/><!-- 邮件编码 防止收到乱码 -->
+    </bean>
+    <!-- 发送邮件 -->
+    <bean id="simpleMailMessage" class="org.springframework.mail.SimpleMailMessage">
+        <property name="from" value="springtest123456@sina.com"/><!-- 发件人 -->
+        <property name="subject" value="testEmail"/><!-- 主题 -->
+        <property name="to" value="songcx2211@sina.com"/><!-- 收件人 -->
+        <!--
+        <property name="text" value="邮件内容" />
+        -->
+    </bean>
+
     <!-- spring-mvc返回支持json类型 -->
     <bean id="mappingJacksonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >

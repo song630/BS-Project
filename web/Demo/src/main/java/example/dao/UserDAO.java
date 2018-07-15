@@ -18,6 +18,7 @@ public interface UserDAO {
     public void resetPassword(String username, String newPassword);
     // 获取当前正在学习的单词书
     public String getStudying(String username);
+    public String getEmail(String username);
     public void setStudying(String username, String newTitle);
     // 用新计划替代旧的 但进度不变
     public void setPlan(String user, int num);

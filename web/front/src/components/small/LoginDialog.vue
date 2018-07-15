@@ -11,7 +11,7 @@
           </el-input>
         </el-form-item>
         <el-form-item :label-width="formLabelWidth">
-          <el-button type="text" style="float: left">Forget your password?</el-button>
+          <el-button type="text" style="float: left" @click="sendEmail">Forget your password?</el-button>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -66,6 +66,30 @@ export default {
     }
   },
   methods: {
+    sendEmail: function () {
+      if (this.form.username === '') {
+        alert('请先输入用户名')
+      } else {
+        $.ajax({
+          type: 'GET',
+          url: 'http://localhost:8080/Hello/send_email/' + this.form.username,
+          crossDomain: true,
+          xhrFields: {
+            withCredentials: true
+          },
+          dataType: 'json',
+          data: {},
+          success: (result) => {
+            if (result.info === 'success') {
+              alert('邮件已发送 密码重置为123456 请重新登录')
+              this.dialogFormVisible = false
+              // ===== 添加一些动作 =====
+            } else { alert('error') }
+          },
+          error: function () { alert('邮件发送失败') }
+        })
+      }
+    },
     buttonClicked: function () {
       let status = getCookie('isLogin')
       if (status === 'true') { // 已经登录
@@ -149,9 +173,7 @@ export default {
           type: 'GET',
           url: 'http://localhost:8080/Hello/submit_login',
           crossDomain: true,
-          xhrFields: {
-            withCredentials: true
-          },
+          xhrFields: { withCredentials: true },
           dataType: 'json',
           data: {obj: JSON.stringify(this.form)},
           success: (result) => { // 后端添加了2个cookie
@@ -168,15 +190,9 @@ export default {
             } else if (result.info === 'not_found') {
               alert('找不到用户')
               this.dialogFormVisible = true
-            } else {
-              alert('登录失败')
-              this.dialogFormVisible = true
-            }
+            } else { alert('登录失败') this.dialogFormVisible = true }
           },
-          error: function () {
-            alert('登录失败')
-            this.dialogFormVisible = true
-          }
+          error: function () { alert('登录失败') this.dialogFormVisible = true }
         })
       }
       */

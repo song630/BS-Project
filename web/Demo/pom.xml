@@ -46,6 +46,7 @@
       <version>1.2</version>
     </dependency>
     <!--mysql驱动包-->
+    <!-- 不用新版本就连不上数据库 一直报错 -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -146,6 +147,17 @@
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcprov-jdk15on</artifactId>
       <version>1.59</version>
+    </dependency>
+    <!-- 邮件 -->
+    <dependency>
+      <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+      <version>1.4.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+      <version>4.3.18.RELEASE</version>
     </dependency>
   </dependencies>
   <build>
