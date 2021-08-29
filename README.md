@@ -1,28 +1,22 @@
-# 背单词网站
-## 要求：任选一种技术实现一个背单词的网站
-## 基本功能：
-* 实现用户注册、登录功能，用户注册时需要填写必要的信息并验证，如用户名、密码要求在6字节以上，email的格式验证，并保证用户名和email在系统中唯一。
-* 用户登录后可以设置需要背的单词集，如4级、6级等。单词集可以从网上收集，数量多少不影响评分。
-* 用户可以维护自己的自定义单词。
-* 实现基本的背诵计划、复习、考核等功能，记录进度。
-* 界面样式需要适配PC和手机的浏览器。
+# A vocabulary learning website 背单词网站
+## Requirements: select a framework to design a website for learning vocabulary
+## Basic features:
+* User sign-up, login, information collection and verfication (e.g., username and password must have at leat 6 characters; email format verification; username and email must be unique in the system).
+* After login, users can select the word books they want to study (e.g., TOEFL, GRE).
+* Users can keep records of their favorite words.
+* The website should supprot making study plan, reviewing, doing test and recording progress.
+* The interface should fit the browsers from both PC and mobile phone.
 
-## 增强功能：
-* 实现一个Android或iphone客户端软件，功能同网站，支持离线使用，并能实现背诵计划的通知提醒
-* 具体一定的学习能力，能根据记忆曲线或用户的使用习惯调整背诵的内容，此项功能在界面上表现不明显时，可以在文档中详细说明
-**为了提交作业方便，如有数据库，建议使用mysql或mangodb，提交作业时同时附带SQL脚本文件**
+## Augmented functions:
+* Implement an Android or iPhone app, supporting off-line services, and could push notifications for the study plan.
+* Has learning ability (adjust the study plan according to the user's pattern).
 
-## 文档要求和评分标准
-* 独立完成
-* 要求界面友好，提供必要的文档，包括设计文档和使用手册等其他文档
-* 中期报告2018年5月10日前提交，占20%最终总评成绩
-* 2018年7月1日前提交程序代码和实验报告
-* 打包发送到[教师邮箱](hu_xj@zju.edu.cn)
-* 文档包括：
-1. 实验报告封面 （见下页）
-2. 设计文档
-3. 其他文档（如使用手册、测试报告、开发体会、小结等）
-4. 源代码文件
+## Instructions:
+---
+1. sql scripts are put under `DB`.
+2. The crawler is put under `WordLists\crawler`, which collects word books and generate `xml` files.
+3. The complete back-end project is put under `web/Demo`, constructed using `SpringMVC`. Source code is put under `web\Demo\src\main\java\example`.
+4. The complete front-end project is put under `web/front`, constructed using `Vue.js` + `ElementUI`. Source code is put under `src\components`.
 
 ## 使用说明
 ---
