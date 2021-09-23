@@ -4,7 +4,7 @@
 * User sign-up, login, information collection and verfication (e.g., username and password must have at leat 6 characters; email format verification; username and email must be unique in the system).
 * After login, users can select the word books they want to study (e.g., TOEFL, GRE).
 * Users can keep records of their favorite words.
-* The website should supprot making study plan, reviewing, doing test and recording progress.
+* The website should support making study plan, reviewing, doing test and recording progress.
 * The interface should fit the browsers from both PC and mobile phone.
 
 ## Augmented functions:
